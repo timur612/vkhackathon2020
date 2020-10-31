@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { platform, IOS } from '@vkontakte/vkui';
 import React from 'react'
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
@@ -8,12 +7,16 @@ import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
-
+import { platform, IOS } from '@vkontakte/vkui';
 import {FormLayout,FormLayoutGroup,Input} from '@vkontakte/vkui';
 const Immus = props =>{
     return (
         <Panel id={props.id}>
-    <PanelHeader>
+    <PanelHeader
+                left={<PanelHeaderButton onClick={props.go} data-to="home">
+                    {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
+                </PanelHeaderButton>}
+            >
       Имущественный налог
     </PanelHeader>
      <FormLayout>
