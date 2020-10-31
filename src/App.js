@@ -5,13 +5,12 @@ import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenS
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
-import Persik from './panels/Persik';
-import Page from './panels/Page';
+
 
 import NDS from './panels/NDS/NDS';
-import Immus from './panels/Immus';
-import NDFL from './panels/NDFL';
-import Trans from './panels/Trans';
+import Immus from './panels/Immuns_Tax/Immus';
+import NDFL from './panels/NDFL/NDFL';
+import Trans from './panels/Trans_Tax/Trans';
 
 
 const App = () => {
@@ -42,8 +41,6 @@ const App = () => {
 	return (
 		<View activePanel={activePanel} popout={popout}>
 			<Home id='home' fetchedUser={fetchedUser} go={go} />
-			<Persik id='persik' go={go} />
-			<Page id='page' go={go}/>
 			<NDS id='nds' go={go}/>
 			<Trans id='Trans'go={go}/>
 			<NDFL id='NDFL' go={go}/>

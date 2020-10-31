@@ -19,7 +19,7 @@ const styles = {
 
 const osName = platform();
 
-const NDS = props =>{
+const NDFL = props =>{
     return (
         <Panel id={props.id}>
             <PanelHeader
@@ -27,7 +27,7 @@ const NDS = props =>{
                     {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
                 </PanelHeaderButton>}
             >
-                Расчет НДС 
+                Расчет НДФЛ 
             </PanelHeader>
             
                 <FormLayout>
@@ -50,4 +50,4 @@ const NDS = props =>{
     );
 }
 
-export default NDS
+export default NDFL
