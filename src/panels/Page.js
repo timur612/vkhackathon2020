@@ -1,4 +1,3 @@
-import { Div } from '@vkontakte/vkui'
 import PropTypes from 'prop-types';
 import { platform, IOS } from '@vkontakte/vkui';
 import React from 'react'
@@ -22,5 +21,10 @@ const Page = props => (
 		
 	</Panel>
 );
+
+Page.propTypes = {
+	id: PropTypes.string.isRequired,
+	go: PropTypes.func.isRequired,
+};
 
 export default Page
