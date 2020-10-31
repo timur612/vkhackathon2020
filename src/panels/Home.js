@@ -11,6 +11,7 @@ import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
 const Home = ({ id, go, fetchedUser }) => (
 	<Panel id={id}>
 		<PanelHeader>Кто зашел тот лох</PanelHeader>
+
 		{fetchedUser &&
 		<Group title="User Data Fetched with VK Bridge">
 			<Cell
@@ -25,6 +26,9 @@ const Home = ({ id, go, fetchedUser }) => (
 			<Div>
 				<Button size="xl" level="2" onClick={go} data-to="persik">
 					Show me the Persik, please
+				</Button>
+				<Button style={{marginTop:".5rem"}} size="xl" level="2" onClick={go} data-to="page">
+					Go to somewhere
 				</Button>
 			</Div>
 		</Group>
