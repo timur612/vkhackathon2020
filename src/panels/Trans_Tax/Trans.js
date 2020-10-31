@@ -80,7 +80,7 @@ const Trans = props =>{
                 stavka=85
             }
         }
-    }else if(region==="Россия"){
+    }else if(region==="Москва"){
         if(catTs==="Автомобили легковые"){
             if(sumInput.value()<=100){
                 stavka=12
@@ -223,10 +223,10 @@ const Trans = props =>{
                             Республика Татарстан
                         </Cell>
                         <Cell
-                            onClick={() => {setRegion('Россия'); setActiveView('profile')}}
-                            asideContent={region === 'Россия' ? <Icon24Done fill="var(--accent)" /> : null}
+                            onClick={() => {setRegion('Москва'); setActiveView('profile')}}
+                            asideContent={region === 'Москва' ? <Icon24Done fill="var(--accent)" /> : null}
                         >
-                            Россия
+                            Москва
                         </Cell>
                         </List>
                     </Group>
