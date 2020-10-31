@@ -1,32 +1,32 @@
 import PropTypes from 'prop-types';
 import { platform, IOS } from '@vkontakte/vkui';
-import React, { useContext } from 'react'
+import React from 'react'
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
 import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton/PanelHeaderButton';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
-import Button from '@vkontakte/vkui/dist/components/Button/Button';
-import Context from '../../Context'
 
-import {View,Title } from '@vkontakte/vkui';
+import {Title } from '@vkontakte/vkui';
 
 const osName = platform();
 
 const ResultNDFL = (props) =>{
-
-    //const value = useContext(Context);
 
     function ndflCount(sum,stavka){
         let sumNds = sum*stavka;
         return sumNds;
     }
     function ndflWithout(sum,stavka){
+        let sumWithoutNds = sum+(sum*stavka);
+        return sumWithoutNds;
+    }
+    function ndflOklad(sum,stavka){
         let sumWithoutNds = sum-(sum*stavka);
         return sumWithoutNds;
     }
-
+    console.log(props.value.typeNdfl)
     return (
     <Panel id={props.id}>
         <PanelHeader
@@ -44,18 +44,20 @@ const ResultNDFL = (props) =>{
             <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.stavkaInput}%</Title >
 
             <Title  weight="regular">Сумма НДФЛ</Title >
-            <Title  weight="medium" style={{ marginBottom: 16 }}>{ndsCount(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
+            <Title  weight="medium" style={{ marginBottom: 16 }}>{ndflCount(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
 
-            <Title  weight="regular">Сумма без НДФЛ</Title >
-            <Title  weight="medium" style={{ marginBottom: 16 }}>{ndsWithout(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
+            <Title  weight="regular">Сумма отклада</Title >
+            {props.value.typeNdfl==='Посчитать налог'?
+                <Title  weight="medium" style={{ marginBottom: 16 }}>{ndflWithout(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
+            : <Title  weight="medium" style={{ marginBottom: 16 }}>{ndflOklad(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >}
         </Div>
     </Panel>
     );
     
 }
 
-ResultNDS.propTypes = {
+ResultNDFL.propTypes = {
     props: PropTypes.object.isRequired
 }
 
-export default ResultNDS;
+export default ResultNDFL;

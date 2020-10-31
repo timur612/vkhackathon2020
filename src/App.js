@@ -7,21 +7,28 @@ import '@vkontakte/vkui/dist/vkui.css';
 import Home from './panels/Home';
 
 import NDS from './panels/NDS/NDS';
-import Immus from './panels/Immuns_Tax/Immus';
+import Immus from './panels/Immuns_Tax/Immus2';
 import NDFL from './panels/NDFL/NDFL';
 import Trans from './panels/Trans_Tax/Trans';
 import ResultNDS from './panels/NDS/ResultNDS';
-
-import Context from './Context'
+import ResultNDFL from './panels/NDFL/ResultNDFL';
 
 const App = () => {
 	const [sumInput,setSumInput] = useState(0);
 	const [stavkaInput,setStavkaInput] = useState(0);
+	const [typeNdfl,setTypeNdfl] = useState('');
 
 	function showNds(arg){
 		setSumInput(arg.sumInput);
 		setStavkaInput(arg.stavkaInput);
 	}
+
+	function showNdfl(arg){
+		setSumInput(arg.sumInput);
+		setStavkaInput(arg.stavkaInput);
+		setTypeNdfl(arg.ras);
+	}
+
 
 	const [activePanel, setActivePanel] = useState('home');
 	
@@ -47,18 +54,17 @@ const App = () => {
 	const go = e => {
 		setActivePanel(e.currentTarget.dataset.to);
 	};
-
-	let sumNds=0;
-	let sumWithoutNds=0;
+	
 	return (
 
 			<View activePanel={activePanel} popout={popout}>
 				<Home id='home' fetchedUser={fetchedUser} go={go}/>
 				<NDS id='nds' go={go} showValue={showNds}/>
 				<Trans id='Trans'go={go}/>
-				<NDFL id='NDFL' go={go} />
+				<NDFL id='NDFL' go={go} showValue={showNdfl}/>
 				<Immus id='Immus' go={go}/>
 				<ResultNDS id='resultNds' go={go} value={{sumInput,stavkaInput}}/>
+				<ResultNDFL id='resultNdfl' go={go} value={{sumInput,stavkaInput,typeNdfl}}></ResultNDFL>
 			</View>
 
 			

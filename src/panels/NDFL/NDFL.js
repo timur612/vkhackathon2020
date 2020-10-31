@@ -21,10 +21,30 @@ const styles = {
 
 const osName = platform();
 
+function useInputValue(defaultValue=13){
+    const [value,setValue] = React.useState(defaultValue);
+
+    return {
+        bind:{
+            value,
+            onChange: event => setValue(event.target.value)
+        },
+        clear: ()=> setValue(0),
+        value: () => value
+    }
+}
+
 const NDFL = props =>{
-    const [ras,setRas] = React.useState('raschet');
-    const [stavka,setStavka] = React.useState('stavka');
+    const [ras,setRas] = React.useState('');
+    const [stavka,setStavka] = React.useState('');
+
     const [activeViewq,setActiveView] = React.useState('profile');
+
+    const sumInput = useInputValue('');
+    const stavkaInput = useInputValue(13);
+
+    props.showValue({sumInput:sumInput.value(),stavkaInput:stavkaInput.value(),ras});
+    console.log(ras);
     return (
         <Panel id={props.id}>
             <Root activeView={activeViewq}>
@@ -46,7 +66,8 @@ const NDFL = props =>{
                         >{ras}</SelectMimicry>
 
                         <FormLayoutGroup top="Сумма">
-                            <Input type="text" />
+                            {ras==='' ?<Input disabled type="number" /> 
+                                      :<Input {...sumInput.bind} type="number" />}
                         </FormLayoutGroup>
 
                         <Separator style={{ margin: '12px 0' }} />
@@ -58,13 +79,16 @@ const NDFL = props =>{
                         >{stavka}</SelectMimicry>
 
                         <FormLayoutGroup top="Ставка(%)">
-                            {(stavka==='Обычные доходы(13%)') ? <Input type="text" defaultValue="13" disabled/> : (stavka==='Иностранцы(30%)') ? <Input type="text" defaultValue="30" disabled/> : <Input type="number"/>}
+                            {stavka===''?<Input disabled type="number" />:(stavka==='Обычные доходы(13%)') 
+                                        ? <Input  type="text" value={13} placeholder="13" disabled {...stavkaInput.bind}/> 
+                                        : (stavka==='Иностранцы(30%)') ? <Input  type="text" value={30} placeholder="30" disabled {...stavkaInput.bind}/> 
+                                        : <Input {...stavkaInput.bind} type="number"/>}
                             
                         </FormLayoutGroup>
                     </FormLayout>
                     
                     <Div style={styles.btn}>
-                        <Button size="xl" level="2">
+                        <Button size="xl" level="2" onClick={props.go} data-to="resultNdfl">
                             Рассчитать налог
                         </Button>
                     </Div>
