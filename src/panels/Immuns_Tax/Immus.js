@@ -10,9 +10,9 @@ import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
 
 import {FormLayout,FormLayoutGroup,Input} from '@vkontakte/vkui';
-function Immus(){
+const Immus = props =>{
     return (
-  <Panel id="input">
+        <Panel id={props.id}>
     <PanelHeader>
       Имущественный налог
     </PanelHeader>
