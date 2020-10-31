@@ -14,7 +14,9 @@ const Home = ({ id, go, fetchedUser }) => (
 
 		{fetchedUser &&
 		<Group title="User Data Fetched with VK Bridge">
-			<Cell onClick={() => this.setState({ activePanel: 'panel2' })}/>
+			<Cell onClick={() => this.setState({ activePanel: 'panel2' })}>
+			НДС	
+			</Cell>
 		</Group>}{}
 
 		<Group title="Navigation Example">
