@@ -33,11 +33,11 @@ const Home = ({ id, go, fetchedUser }) => (
 			Транспортный налог	
 			</Cell>
 		</Group>
-		<Group title="Посчитать имущественный налог">
+		{/* <Group title="Посчитать имущественный налог">
 			<Cell onClick={go} data-to="Immus">
 			Имущественный налог	
 			</Cell>
-		</Group>
+		</Group> */}
 	</Panel>
 );
 
