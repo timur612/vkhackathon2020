@@ -16,13 +16,18 @@ const osName = platform();
 
 const ResultNDS = (props) =>{
 
-    const value = useContext(Context);
+    //const value = useContext(Context);
 
     function ndsCount(sum,stavka){
         let sumNds = sum*stavka;
-        let sumWithoutNds = sum-(sum*stavka);
-        return {sumNds,sumWithoutNds};
+        
+        return sumNds;
     }
+    function ndsWithout(sum,stavka){
+        let sumWithoutNds = sum-(sum*stavka);
+        return sumWithoutNds;
+    }
+
     return (
     <Panel id={props.id}>
         <PanelHeader
@@ -34,16 +39,16 @@ const ResultNDS = (props) =>{
         </PanelHeader>
         <Div>
             <Title  weight="regular">НДС из</Title >
-            <Title  weight="medium" style={{ marginBottom: 16 }}>45 000</Title >
+            <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.sumInput} руб.</Title >
 
             <Title  weight="regular">Ставка</Title >
-            <Title  weight="medium" style={{ marginBottom: 16 }}>20%</Title >
+            <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.stavkaInput}%</Title >
 
             <Title  weight="regular">Сумма НДС</Title >
-            <Title  weight="medium" style={{ marginBottom: 16 }}>{value}</Title >
+            <Title  weight="medium" style={{ marginBottom: 16 }}>{ndsCount(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
 
             <Title  weight="regular">Сумма без НДС</Title >
-            <Title  weight="medium" style={{ marginBottom: 16 }}>{value}</Title >
+            <Title  weight="medium" style={{ marginBottom: 16 }}>{ndsWithout(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
         </Div>
     </Panel>
     );

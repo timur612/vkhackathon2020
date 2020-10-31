@@ -6,7 +6,6 @@ import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
 
-
 import NDS from './panels/NDS/NDS';
 import Immus from './panels/Immuns_Tax/Immus';
 import NDFL from './panels/NDFL/NDFL';
@@ -16,6 +15,14 @@ import ResultNDS from './panels/NDS/ResultNDS';
 import Context from './Context'
 
 const App = () => {
+	const [sumInput,setSumInput] = useState(0);
+	const [stavkaInput,setStavkaInput] = useState(0);
+
+	function showNds(arg){
+		setSumInput(arg.sumInput);
+		setStavkaInput(arg.stavkaInput);
+	}
+
 	const [activePanel, setActivePanel] = useState('home');
 	
 	const [fetchedUser, setUser] = useState(null);
@@ -40,18 +47,21 @@ const App = () => {
 	const go = e => {
 		setActivePanel(e.currentTarget.dataset.to);
 	};
+
 	let sumNds=0;
 	let sumWithoutNds=0;
 	return (
-		
+
 			<View activePanel={activePanel} popout={popout}>
-				<Home id='home' fetchedUser={fetchedUser} go={go} />
-				<NDS id='nds' go={go}/>
+				<Home id='home' fetchedUser={fetchedUser} go={go}/>
+				<NDS id='nds' go={go} showValue={showNds}/>
 				<Trans id='Trans'go={go}/>
-				<NDFL id='NDFL' go={go}/>
+				<NDFL id='NDFL' go={go} />
 				<Immus id='Immus' go={go}/>
-				<ResultNDS id='resultNds' go={go}/>
+				<ResultNDS id='resultNds' go={go} value={{sumInput,stavkaInput}}/>
 			</View>
+
+			
 		
 	);
 }

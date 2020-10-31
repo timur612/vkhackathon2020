@@ -9,6 +9,7 @@ import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
 
+
 import {FormLayout,FormLayoutGroup,Input,SelectMimicry,View,Root,Group,List,Cell,Separator} from '@vkontakte/vkui';
 import Icon24Done from '@vkontakte/icons/dist/24/done'
 
@@ -57,7 +58,8 @@ const NDFL = props =>{
                         >{stavka}</SelectMimicry>
 
                         <FormLayoutGroup top="Ставка(%)">
-                            <Input type="text" />
+                            {(stavka==='Обычные доходы(13%)') ? <Input type="text" defaultValue="13" disabled/> : <Input type="number"/>}
+                            
                         </FormLayoutGroup>
                     </FormLayout>
                     
@@ -70,7 +72,7 @@ const NDFL = props =>{
                 </Panel>
             </View>
 
-            {/* Расчет view для selectmimicry*/}
+            {/* Расчет view для selectMimicry*/}
             <View activePanel="raschetPanel" id="raschet">
                 <Panel id="raschetPanel">
                     <PanelHeader>
@@ -94,9 +96,9 @@ const NDFL = props =>{
                     </Group>
                 </Panel>
             </View>
-            {/* Расчет view для selectmimicry */}
+            {/* Расчет view для selectMimicry */}
 
-            {/* Ставка view для selectmimicry */}
+            {/* Ставка view для selectMimicry */}
             <View activePanel="stavkaPanel" id="stavka">
                 <Panel id="stavkaPanel">
                     <PanelHeader>
@@ -111,16 +113,22 @@ const NDFL = props =>{
                             Обычные доходы(13%)
                         </Cell>
                         <Cell
-                            onClick={() => {setStavka('Другие ставка'); setActiveView('profile')}}
-                            asideContent={ras === 'Другие ставка' ? <Icon24Done fill="var(--accent)" /> : null}
+                            onClick={() => {setStavka('Иностранцы(30%)'); setActiveView('profile')}}
+                            asideContent={ras === 'Иностранцы(30%)' ? <Icon24Done fill="var(--accent)" /> : null}
                         >
-                            Другие ставка
+                            Иностранцы(30%)
+                        </Cell>
+                        <Cell
+                            onClick={() => {setStavka('Другая ставка'); setActiveView('profile')}}
+                            asideContent={ras === 'Другая ставка' ? <Icon24Done fill="var(--accent)" /> : null}
+                        >
+                            Другая ставка
                         </Cell>
                         </List>
                     </Group>
                 </Panel>
             </View>
-            {/* Ставка view для selectmimicry */}
+            {/* Ставка view для selectMimicry */}
 
         </Root>
         </Panel>

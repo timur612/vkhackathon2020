@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { platform, IOS, Separator } from '@vkontakte/vkui';
-import React from 'react'
+import React, { useContext } from 'react'
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
 import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton/PanelHeaderButton';
@@ -36,12 +36,13 @@ function useInputValue(defaultValue=0){
 const NDS = props=> {
     const sumInput = useInputValue('');
     const stavkaInput = useInputValue('');
-    
-    
+
+    //props.value = sumInput.value();
+
+    props.showValue({sumInput:sumInput.value(),stavkaInput:stavkaInput.value()})
     //console.log(ndsCount(parseInt(sumInput.value()),parseInt(stavkaInput.value())/100).sumNds);
     return (
         <Panel id={props.id}>
-            <Context.Provider value={{'sumInput':sumInput.value,'stavkaInput':stavkaInput.value}}>
                 <PanelHeader
                     left={<PanelHeaderButton onClick={props.go} data-to="home">
                         {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
@@ -60,19 +61,17 @@ const NDS = props=> {
                         </FormLayoutGroup>
                     </FormLayout>
                 <Div style={styles.btn}>
-                    <Button size="xl" level="2" onClick={props.go} data-to="resultNds" > 
+                    
+                    <Button size="xl" level="2" onClick={props.go} data-to={"resultNds"} > 
                         Рассчитать налог
                     </Button>
                 </Div>
-            </Context.Provider>
 	    </Panel>
     );
-    
 }
 
 NDS.propTypes = {
     props: PropTypes.object.isRequired,
-
 }
 
 export default NDS;
