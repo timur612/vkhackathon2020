@@ -15,6 +15,7 @@ import Trans from './panels/Trans_Tax/Trans';
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
+	const [activeRoot, setActiveRoot] = useState('');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 
@@ -37,6 +38,9 @@ const App = () => {
 	const go = e => {
 		setActivePanel(e.currentTarget.dataset.to);
 	};
+	const goRoot = e=>{
+		setActiveRoot(e.currentTarget.dataset.to);
+	}
 
 	return (
 		<View activePanel={activePanel} popout={popout}>

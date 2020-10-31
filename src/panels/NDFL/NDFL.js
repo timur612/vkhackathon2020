@@ -15,20 +15,21 @@ import Icon24Done from '@vkontakte/icons/dist/24/done'
 const styles = {
     btn: {
         marginTop:'.5rem'
-    }
+    }  
 }
 
 const osName = platform();
 
 const NDFL = props =>{
-    const [country,setCountry] = React.useState({country:''});
-    const [activeView,setActiveView] = React.useState({activeView: 'profile'});
+    const [country,setCountry] = React.useState('');
+    const [activeViewq,setActiveView] = React.useState('profile');
     return (
-        <Root activeView={activeView}>
-            <View activePanel="profile" id="profile">
-                <Panel id="profile">
+        <Panel id={props.id}>
+            <Root activeView={activeViewq}>
+            <View activePanel="profilePanel" id="profile">
+                <Panel id="profilePanel">
                     <PanelHeader
-                        left={<PanelHeaderButton onClick={props.go} data-to="home">
+                        left={<PanelHeaderButton onClick={props.go} data-to="home"> 
                             {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
                         </PanelHeaderButton>}
                     >
@@ -39,7 +40,7 @@ const NDFL = props =>{
                             <SelectMimicry
                             top="Выберите страну"
                             placeholder="Не выбрана"
-                            onClick={() => setActiveView({ activeView: 'countries' })}
+                            onClick={() => setActiveView('countries')}
                             >{country}</SelectMimicry>
 
                             <FormLayoutGroup top="Сумма">
@@ -60,27 +61,27 @@ const NDFL = props =>{
                 </Panel>
             </View>
 
-            <View activePanel="countries" id="countries">
-                <Panel id="countries">
+            <View activePanel="countriesPanel" id="countries">
+                <Panel id="countriesPanel">
                     <PanelHeader>
                         Выбор страны
                     </PanelHeader>
                     <Group>
                         <List>
                         <Cell
-                            onClick={() => {setCountry({country: 'Россия'}); setActiveView({activeView: 'profile' })}}
+                            onClick={() => {setCountry('Россия'); setActiveView('profile')}}
                             asideContent={country === 'Россия' ? <Icon24Done fill="var(--accent)" /> : null}
                         >
                             Россия
                         </Cell>
                         <Cell
-                            onClick={() => {setCountry({country: 'Италия'}); setActiveView({activeView: 'profile' })}}
+                            onClick={() => {setCountry('Италия'); setActiveView('profile')}}
                             asideContent={country === 'Италия' ? <Icon24Done fill="var(--accent)" /> : null}
                         >
                             Италия
                         </Cell>
                         <Cell
-                            onClick={() => {setCountry({country: 'Англия'}); setActiveView({activeView: 'profile' })}}
+                            onClick={() => {setCountry('Англия'); setActiveView('profile')}}
                             asideContent={country === 'Англия' ? <Icon24Done fill="var(--accent)" /> : null}
                         >
                             Англия
@@ -90,6 +91,7 @@ const NDFL = props =>{
                 </Panel>
             </View>
         </Root>
+        </Panel>
     );
 }
 
