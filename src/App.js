@@ -12,11 +12,13 @@ import NDFL from './panels/NDFL/NDFL';
 import Trans from './panels/Trans_Tax/Trans';
 import ResultNDS from './panels/NDS/ResultNDS';
 import ResultNDFL from './panels/NDFL/ResultNDFL';
+import ResultTrans from './panels/Trans_Tax/ResultTrans';
 
 const App = () => {
 	const [sumInput,setSumInput] = useState(0);
 	const [stavkaInput,setStavkaInput] = useState(0);
 	const [typeNdfl,setTypeNdfl] = useState('');
+	const [month,setMonth] = useState(1);
 
 	function showNds(arg){
 		setSumInput(arg.sumInput);
@@ -27,6 +29,12 @@ const App = () => {
 		setSumInput(arg.sumInput);
 		setStavkaInput(arg.stavkaInput);
 		setTypeNdfl(arg.ras);
+	}
+
+	function showTs(arg){
+		setSumInput(arg.ls);
+		setStavkaInput(arg.stavka);
+		setMonth(arg.month);
 	}
 
 
@@ -54,9 +62,8 @@ const App = () => {
 	const go = e => {
 		setActivePanel(e.currentTarget.dataset.to);
 	};
-	
-	return (
 
+	return (
 			<View activePanel={activePanel} popout={popout}>
 				<Home id='home' fetchedUser={fetchedUser} go={go}/>
 				<NDS id='nds' go={go} showValue={showNds}/>
@@ -65,10 +72,8 @@ const App = () => {
 				<Immus id='Immus' go={go}/>
 				<ResultNDS id='resultNds' go={go} value={{sumInput,stavkaInput}}/>
 				<ResultNDFL id='resultNdfl' go={go} value={{sumInput,stavkaInput,typeNdfl}}></ResultNDFL>
-			</View>
-
-			
-		
+				<ResultTrans id='resultTrans' go={go} value={{sumInput,stavkaInput,month}}/>
+			</View>	
 	);
 }
 
