@@ -19,7 +19,7 @@ const styles = {
 
 const osName = platform();
 
-const NDS = props =>{
+const NDS = props=> {
     return (
         <Panel id={props.id}>
             <PanelHeader
@@ -41,7 +41,7 @@ const NDS = props =>{
                 </FormLayout>
             
             <Div style={styles.btn}>
-                <Button size="xl" level="2">
+                <Button size="xl" level="2" onClick={props.go} data-to="resultNds">
                     Рассчитать налог
                 </Button>
             </Div>
@@ -50,4 +50,9 @@ const NDS = props =>{
     );
 }
 
-export default NDS
+NDS.propTypes = {
+    props: PropTypes.object.isRequired,
+    go: PropTypes.func.isRequired,
+}
+
+export default NDS;

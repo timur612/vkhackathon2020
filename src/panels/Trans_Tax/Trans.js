@@ -65,14 +65,8 @@ const Trans = props =>{
     );
 }
 
-export default Trans
-var model = ('#model');
-('#mark').change(function() {
-  var index = this.options.selectedIndex;
-  model.find('option').each(function(i) {
-    this.disabled = i < index;
-  })
-  if (model.find(':selected').index() < index) { //model[0].options.selectedIndex<index
-    model.val(this.value);
-  }
-});
+Trans.propTypes = {
+  props: PropTypes.object.isRequired
+}
+
+export default Trans;

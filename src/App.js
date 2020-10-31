@@ -11,11 +11,11 @@ import NDS from './panels/NDS/NDS';
 import Immus from './panels/Immuns_Tax/Immus';
 import NDFL from './panels/NDFL/NDFL';
 import Trans from './panels/Trans_Tax/Trans';
-
+import ResultNDS from './panels/NDS/ResultNDS';
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
-	const [activeRoot, setActiveRoot] = useState('');
+	
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 
@@ -38,9 +38,6 @@ const App = () => {
 	const go = e => {
 		setActivePanel(e.currentTarget.dataset.to);
 	};
-	const goRoot = e=>{
-		setActiveRoot(e.currentTarget.dataset.to);
-	}
 
 	return (
 		<View activePanel={activePanel} popout={popout}>
@@ -49,6 +46,7 @@ const App = () => {
 			<Trans id='Trans'go={go}/>
 			<NDFL id='NDFL' go={go}/>
 			<Immus id='Immus' go={go}/>
+			<ResultNDS id='resultNds' go={go}/>
 		</View>
 	);
 }

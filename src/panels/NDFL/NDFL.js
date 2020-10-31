@@ -9,7 +9,7 @@ import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
 
-import {FormLayout,FormLayoutGroup,Input,SelectMimicry,View,Root,Group,List,Cell} from '@vkontakte/vkui';
+import {FormLayout,FormLayoutGroup,Input,SelectMimicry,View,Root,Group,List,Cell,Separator} from '@vkontakte/vkui';
 import Icon24Done from '@vkontakte/icons/dist/24/done'
 
 const styles = {
@@ -21,7 +21,8 @@ const styles = {
 const osName = platform();
 
 const NDFL = props =>{
-    const [country,setCountry] = React.useState('');
+    const [ras,setRas] = React.useState('');
+    const [stavka,setStavka] = React.useState('');
     const [activeViewq,setActiveView] = React.useState('profile');
     return (
         <Panel id={props.id}>
@@ -36,21 +37,29 @@ const NDFL = props =>{
                         Расчет НДФЛ 
                     </PanelHeader>
 
-                        <FormLayout>
-                            <SelectMimicry
-                            top="Выберите страну"
+                    <FormLayout>
+                        <SelectMimicry
+                            top="Выберите расчет"
+                            placeholder="Не выбран"
+                            onClick={() => setActiveView('raschet')}
+                        >{ras}</SelectMimicry>
+
+                        <FormLayoutGroup top="Сумма">
+                            <Input type="text" />
+                        </FormLayoutGroup>
+
+                        <Separator style={{ margin: '12px 0' }} />
+
+                        <SelectMimicry
+                            top="Ставка"
                             placeholder="Не выбрана"
-                            onClick={() => setActiveView('countries')}
-                            >{country}</SelectMimicry>
+                            onClick={() => setActiveView('stavka')}
+                        >{stavka}</SelectMimicry>
 
-                            <FormLayoutGroup top="Сумма">
-                                <Input type="text" />
-                            </FormLayoutGroup>
-
-                            <FormLayoutGroup top="Ставка(%)">
-                                <Input type="text" />
-                            </FormLayoutGroup>
-                        </FormLayout>
+                        <FormLayoutGroup top="Ставка(%)">
+                            <Input type="text" />
+                        </FormLayoutGroup>
+                    </FormLayout>
                     
                     <Div style={styles.btn}>
                         <Button size="xl" level="2">
@@ -61,38 +70,65 @@ const NDFL = props =>{
                 </Panel>
             </View>
 
-            <View activePanel="countriesPanel" id="countries">
-                <Panel id="countriesPanel">
+            {/* Расчет view для selectmimicry*/}
+            <View activePanel="raschetPanel" id="raschet">
+                <Panel id="raschetPanel">
                     <PanelHeader>
-                        Выбор страны
+                        Выбор налога
                     </PanelHeader>
                     <Group>
                         <List>
                         <Cell
-                            onClick={() => {setCountry('Россия'); setActiveView('profile')}}
-                            asideContent={country === 'Россия' ? <Icon24Done fill="var(--accent)" /> : null}
+                            onClick={() => {setRas('Посчитать налог'); setActiveView('profile')}}
+                            asideContent={ras === 'Посчитать налог' ? <Icon24Done fill="var(--accent)" /> : null}
                         >
-                            Россия
+                            Посчитать налог
                         </Cell>
                         <Cell
-                            onClick={() => {setCountry('Италия'); setActiveView('profile')}}
-                            asideContent={country === 'Италия' ? <Icon24Done fill="var(--accent)" /> : null}
+                            onClick={() => {setRas('Что-то налог'); setActiveView('profile')}}
+                            asideContent={ras === 'Что-то налог' ? <Icon24Done fill="var(--accent)" /> : null}
                         >
-                            Италия
-                        </Cell>
-                        <Cell
-                            onClick={() => {setCountry('Англия'); setActiveView('profile')}}
-                            asideContent={country === 'Англия' ? <Icon24Done fill="var(--accent)" /> : null}
-                        >
-                            Англия
+                            Что-то налог
                         </Cell>
                         </List>
                     </Group>
                 </Panel>
             </View>
+            {/* Расчет view для selectmimicry */}
+
+            {/* Ставка view для selectmimicry */}
+            <View activePanel="stavkaPanel" id="stavka">
+                <Panel id="stavkaPanel">
+                    <PanelHeader>
+                        Выбор ставки
+                    </PanelHeader>
+                    <Group>
+                        <List>
+                        <Cell
+                            onClick={() => {setStavka('Обычные доходы(13%)'); setActiveView('profile')}}
+                            asideContent={ras === 'Обычные доходы(13%)' ? <Icon24Done fill="var(--accent)" /> : null}
+                        >
+                            Обычные доходы(13%)
+                        </Cell>
+                        <Cell
+                            onClick={() => {setStavka('Другие ставка'); setActiveView('profile')}}
+                            asideContent={ras === 'Другие ставка' ? <Icon24Done fill="var(--accent)" /> : null}
+                        >
+                            Другие ставка
+                        </Cell>
+                        </List>
+                    </Group>
+                </Panel>
+            </View>
+            {/* Ставка view для selectmimicry */}
+
         </Root>
         </Panel>
     );
+}
+
+NDFL.propTypes = {
+    props: PropTypes.object.isRequired
 }
 
 export default NDFL
