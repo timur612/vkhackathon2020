@@ -44,12 +44,26 @@ const Trans = props =>{
                 </Select>
                 <Select name="model" id="model" placeholder="Выберите модель">
                     <option value="Corolla">Corolla</option>
-                    <option value="BMW">BMW X8</option>
+                    <option value="BMW">BMW X6 xDrive30d | дизель 2993 см3</option>
                     <option value="Nissan">X-Trail</option>
                 </Select>
                     <FormLayoutGroup top="Мощность в Л.С">
                         <Input type="number" />
                     </FormLayoutGroup>
+                <Select name="model" id="model" placeholder="Количество месяцев владения ТС">
+                    <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+                    <option value="4">04</option>
+                    <option value="5">05</option>
+                    <option value="6">06</option>
+                    <option value="7">07</option>
+                    <option value="8">08</option>
+                    <option value="9">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </Select>
                 <Select placeholder="Выберите год выпуска">
                     <option value="Toyota">2003</option>
                     <option value="BMW">2013</option>
