@@ -58,7 +58,7 @@ const NDFL = props =>{
                         >{stavka}</SelectMimicry>
 
                         <FormLayoutGroup top="Ставка(%)">
-                            {(stavka==='Обычные доходы(13%)') ? <Input type="text" defaultValue="13" disabled/> : <Input type="number"/>}
+                            {(stavka==='Обычные доходы(13%)') ? <Input type="text" defaultValue="13" disabled/> : (stavka==='Иностранцы(30%)') ? <Input type="text" defaultValue="30" disabled/> : <Input type="number"/>}
                             
                         </FormLayoutGroup>
                     </FormLayout>
@@ -87,10 +87,10 @@ const NDFL = props =>{
                             Посчитать налог
                         </Cell>
                         <Cell
-                            onClick={() => {setRas('Что-то налог'); setActiveView('profile')}}
-                            asideContent={ras === 'Что-то налог' ? <Icon24Done fill="var(--accent)" /> : null}
+                            onClick={() => {setRas('Посчитать сумму к выплате и налог'); setActiveView('profile')}}
+                            asideContent={ras === 'Посчитать сумму к выплате и налог' ? <Icon24Done fill="var(--accent)" /> : null}
                         >
-                            Что-то налог
+                            Посчитать сумму к выплате и налог
                         </Cell>
                         </List>
                     </Group>
@@ -108,19 +108,19 @@ const NDFL = props =>{
                         <List>
                         <Cell
                             onClick={() => {setStavka('Обычные доходы(13%)'); setActiveView('profile')}}
-                            asideContent={ras === 'Обычные доходы(13%)' ? <Icon24Done fill="var(--accent)" /> : null}
+                            asideContent={stavka === 'Обычные доходы(13%)' ? <Icon24Done fill="var(--accent)" /> : null}
                         >
                             Обычные доходы(13%)
                         </Cell>
                         <Cell
                             onClick={() => {setStavka('Иностранцы(30%)'); setActiveView('profile')}}
-                            asideContent={ras === 'Иностранцы(30%)' ? <Icon24Done fill="var(--accent)" /> : null}
+                            asideContent={stavka === 'Иностранцы(30%)' ? <Icon24Done fill="var(--accent)" /> : null}
                         >
                             Иностранцы(30%)
                         </Cell>
                         <Cell
                             onClick={() => {setStavka('Другая ставка'); setActiveView('profile')}}
-                            asideContent={ras === 'Другая ставка' ? <Icon24Done fill="var(--accent)" /> : null}
+                            asideContent={stavka === 'Другая ставка' ? <Icon24Done fill="var(--accent)" /> : null}
                         >
                             Другая ставка
                         </Cell>

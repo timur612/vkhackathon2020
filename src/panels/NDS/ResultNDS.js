@@ -20,7 +20,6 @@ const ResultNDS = (props) =>{
 
     function ndsCount(sum,stavka){
         let sumNds = sum*stavka;
-        
         return sumNds;
     }
     function ndsWithout(sum,stavka){
