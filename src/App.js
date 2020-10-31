@@ -13,7 +13,9 @@ import NDFL from './panels/NDFL/NDFL';
 import Trans from './panels/Trans_Tax/Trans';
 import ResultNDS from './panels/NDS/ResultNDS';
 
-const App = ({sumNds,sumWithoutNds}) => {
+import Context from './Context'
+
+const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
 	
 	const [fetchedUser, setUser] = useState(null);
@@ -38,16 +40,19 @@ const App = ({sumNds,sumWithoutNds}) => {
 	const go = e => {
 		setActivePanel(e.currentTarget.dataset.to);
 	};
-
+	let sumNds=0;
+	let sumWithoutNds=0;
 	return (
-		<View activePanel={activePanel} popout={popout}>
-			<Home id='home' fetchedUser={fetchedUser} go={go} />
-			<NDS id='nds' go={go}/>
-			<Trans id='Trans'go={go}/>
-			<NDFL id='NDFL' go={go}/>
-			<Immus id='Immus' go={go}/>
-			<ResultNDS id='resultNds' sumNds={100} sumWithoutNds={100}  go={go}/>
-		</View>
+		
+			<View activePanel={activePanel} popout={popout}>
+				<Home id='home' fetchedUser={fetchedUser} go={go} />
+				<NDS id='nds' go={go}/>
+				<Trans id='Trans'go={go}/>
+				<NDFL id='NDFL' go={go}/>
+				<Immus id='Immus' go={go}/>
+				<ResultNDS id='resultNds' go={go}/>
+			</View>
+		
 	);
 }
 
