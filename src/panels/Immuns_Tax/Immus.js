@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 import { Formik, Field, Form, useField, useFormikContext } from 'formik'
-import './styles.css';
+//import './styles.css';
 
 async function fetchNewTextC(a, b) {
   await new Promise((r) => setTimeout(r, 500));
@@ -88,3 +88,5 @@ function App() {
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(<App />, rootElement);
+
+export default fetchNewTextC;
