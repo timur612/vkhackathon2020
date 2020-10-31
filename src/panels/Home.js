@@ -10,6 +10,7 @@ import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
 
 const Home = ({ id, go, fetchedUser }) => (
 	<Panel id={id}>
+<<<<<<< Updated upstream
 		<PanelHeader>Кто зашел тот лох трусы в горох</PanelHeader>
 		{fetchedUser &&
 		<Group title="User Data Fetched with VK Bridge">
@@ -20,11 +21,15 @@ const Home = ({ id, go, fetchedUser }) => (
 				{`${fetchedUser.first_name} ${fetchedUser.last_name}`}
 			</Cell>
 		</Group>}
+=======
+		<PanelHeader>Налоговый калькулятор</PanelHeader>
+		
+>>>>>>> Stashed changes
 
 		<Group title="Navigation Example">
 			<Div>
 				<Button size="xl" level="2" onClick={go} data-to="persik">
-					Show me the Persik, please
+					НДС
 				</Button>
 			</Div>
 		</Group>
