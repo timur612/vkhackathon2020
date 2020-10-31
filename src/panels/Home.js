@@ -12,22 +12,22 @@ const Home = ({ id, go, fetchedUser }) => (
 	<Panel id={id}>
 		<PanelHeader>Налоговый калькулятор</PanelHeader>
 
-		<Group title="User Data Fetched with VK Bridge">
+		<Group title="Посчитать НДС">
 			<Cell onClick={go} data-to="nds">
 			НДС	
 			</Cell>
 		</Group>
-		<Group title="User Data Fetched with VK Bridge">
+		<Group title="Посчитать НДФЛ">
 			<Cell onClick={go} data-to="NDFL">
 			НДФЛ	
 			</Cell>
 		</Group>
-		<Group title="User Data Fetched with VK Bridge">
+		<Group title="Посчитать транспортный налог">
 			<Cell onClick={go} data-to="Trans">
 			Транспортный налог	
 			</Cell>
 		</Group>
-		<Group title="User Data Fetched with VK Bridge">
+		<Group title="Посчитать имущественный налог">
 			<Cell onClick={go} data-to="Immus">
 			Имущественный налог	
 			</Cell>
