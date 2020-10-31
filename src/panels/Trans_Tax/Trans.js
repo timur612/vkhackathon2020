@@ -10,6 +10,8 @@ import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
 
 import {FormLayout,FormLayoutGroup,Input} from '@vkontakte/vkui';
+import { Select } from '@vkontakte/vkui';
+
 
 const styles = {
     btn: {
@@ -27,25 +29,38 @@ const Trans = props =>{
                     {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
                 </PanelHeaderButton>}
             >
-                Расчет НДС 
+                Расчёт Транспортного налога 
             </PanelHeader>
-            
                 <FormLayout>
-                    <FormLayoutGroup top="НДС из">
-                        <Input type="text" />
+                <Select placeholder="Выберите регион">
+                    <option value="Yakutia">Республика Саха (Якутия)</option>
+                    <option value="Russia">Россия</option>
+                    <option value="Tatarstan">Татарстан</option>
+                </Select>
+                <Select placeholder="Выберерите марку">
+                    <option value="Toyota">Toyota</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Nissan">Nissan</option>
+                </Select>
+                <Select placeholder="Выберите модель">
+                    <option value="Toyota">Corolla</option>
+                    <option value="BMW">BMW X8</option>
+                    <option value="Nissan">X-Trail</option>
+                </Select>
+                    <FormLayoutGroup top="Мощность в Л.С">
+                        <Input type="number" />
                     </FormLayoutGroup>
-
-                    <FormLayoutGroup top="Ставка(%)">
-                        <Input type="text" />
-                    </FormLayoutGroup>
-                </FormLayout>
-            
+                <Select placeholder="Выберите год выпуска">
+                    <option value="Toyota">2003</option>
+                    <option value="BMW">2013</option>
+                    <option value="Nissan">2015</option>
+                </Select>
             <Div style={styles.btn}>
                 <Button size="xl" level="2">
                     Рассчитать налог
                 </Button>
             </Div>
-            
+            </FormLayout>
 	    </Panel>
     );
 }
