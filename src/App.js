@@ -8,6 +8,10 @@ import Home from './panels/Home';
 import Persik from './panels/Persik';
 import Page from './panels/Page';
 import NDS from './panels/NDS';
+import Immus from './panels/Immus';
+import NDFL from './panels/NDFL';
+import Trans from './panels/Trans';
+
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
@@ -40,6 +44,9 @@ const App = () => {
 			<Persik id='persik' go={go} />
 			<Page id='page' go={go}/>
 			<NDS id='nds' go={go}/>
+			<Trans id='Trans'go={go}/>
+			<NDFL id='NDFL' go={go}/>
+			<Immus id='Immus' go={go}/>
 		</View>
 	);
 }

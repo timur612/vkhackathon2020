@@ -17,17 +17,21 @@ const Home = ({ id, go, fetchedUser }) => (
 			<Cell onClick={go} data-to="nds">
 			НДС	
 			</Cell>
-		</Group>}{}
-
-		<Group title="Navigation Example">
-			<Div>
-				<Button size="xl" level="2" onClick={go} data-to="persik">
-					Show me the Persik, please
-				</Button>
-				<Button style={{marginTop:".5rem"}} size="xl" level="2" onClick={go} data-to="page">
-					Go to somewhere
-				</Button>
-			</Div>
+		</Group>}
+		<Group title="User Data Fetched with VK Bridge">
+			<Cell onClick={go} data-to="NDFL">
+			НДФЛ	
+			</Cell>
+		</Group>
+		<Group title="User Data Fetched with VK Bridge">
+			<Cell onClick={go} data-to="Trans">
+			Транспортный налог	
+			</Cell>
+		</Group>
+		<Group title="User Data Fetched with VK Bridge">
+			<Cell onClick={go} data-to="Immus">
+			Имущественный налог	
+			</Cell>
 		</Group>
 	</Panel>
 );
