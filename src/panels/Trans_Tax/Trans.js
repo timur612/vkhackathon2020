@@ -37,13 +37,13 @@ const Trans = props =>{
                     <option value="Russia">Россия</option>
                     <option value="Tatarstan">Татарстан</option>
                 </Select>
-                <Select placeholder="Выберерите марку">
+                <Select name="mark" id="mark" placeholder="Выберерите марку">
                     <option value="Toyota">Toyota</option>
                     <option value="BMW">BMW</option>
                     <option value="Nissan">Nissan</option>
                 </Select>
-                <Select placeholder="Выберите модель">
-                    <option value="Toyota">Corolla</option>
+                <Select name="model" id="model" placeholder="Выберите модель">
+                    <option value="Corolla">Corolla</option>
                     <option value="BMW">BMW X8</option>
                     <option value="Nissan">X-Trail</option>
                 </Select>
@@ -66,3 +66,13 @@ const Trans = props =>{
 }
 
 export default Trans
+var model = ('#model');
+('#mark').change(function() {
+  var index = this.options.selectedIndex;
+  model.find('option').each(function(i) {
+    this.disabled = i < index;
+  })
+  if (model.find(':selected').index() < index) { //model[0].options.selectedIndex<index
+    model.val(this.value);
+  }
+});
