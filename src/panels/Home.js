@@ -14,7 +14,7 @@ const Home = ({ id, go, fetchedUser }) => (
 
 		{fetchedUser &&
 		<Group title="User Data Fetched with VK Bridge">
-			<Cell onClick={go} data-to="NDS">
+			<Cell onClick={go} data-to="nds">
 			НДС	
 			</Cell>
 		</Group>}{}
