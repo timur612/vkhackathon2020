@@ -14,19 +14,7 @@ const osName = platform();
 
 const ResultTrans = (props) =>{
 
-    function ndflCount(sum,stavka){
-        let sumNds = sum*stavka;
-        return sumNds;
-    }
-    function ndflWithout(sum,stavka){
-        let sumWithoutNds = sum+(sum*stavka);
-        return sumWithoutNds;
-    }
-    function ndflOklad(sum,stavka){
-        let sumWithoutNds = sum-(sum*stavka);
-        return sumWithoutNds;
-    }
-    console.log(props.value.typeNdfl)
+    console.log(props.value.stavkaInput)
     return (
     <Panel id={props.id}>
         <PanelHeader
@@ -37,19 +25,14 @@ const ResultTrans = (props) =>{
                 Результат
         </PanelHeader>
         <Div>
-            <Title  weight="regular">Сумма</Title >
-            <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.sumInput} руб.</Title >
+            <Title  weight="regular">Регион</Title >
+            <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.region}</Title >
 
-            <Title  weight="regular">Ставка</Title >
-            <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.stavkaInput}%</Title >
+            <Title  weight="regular">Мощность в Л.С.</Title >
+            <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.sumInput}</Title >
 
-            <Title  weight="regular">Сумма НДФЛ</Title >
-            <Title  weight="medium" style={{ marginBottom: 16 }}>{ndflCount(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
-
-            <Title  weight="regular">Сумма оклада</Title >
-            {props.value.typeNdfl==='Посчитать налог'?
-                <Title  weight="medium" style={{ marginBottom: 16 }}>{ndflWithout(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
-            : <Title  weight="medium" style={{ marginBottom: 16 }}>{ndflOklad(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >}
+            <Title  weight="regular">Сумма налога</Title >
+            <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.sumInput*props.value.stavkaInput*(props.value.month/12)} руб.</Title >
         </Div>
     </Panel>
     );

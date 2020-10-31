@@ -19,6 +19,7 @@ const App = () => {
 	const [stavkaInput,setStavkaInput] = useState(0);
 	const [typeNdfl,setTypeNdfl] = useState('');
 	const [month,setMonth] = useState(1);
+	const [region,setRegion] = useState('');
 
 	function showNds(arg){
 		setSumInput(arg.sumInput);
@@ -35,6 +36,7 @@ const App = () => {
 		setSumInput(arg.ls);
 		setStavkaInput(arg.stavka);
 		setMonth(arg.month);
+		setRegion(arg.region)
 	}
 
 
@@ -67,12 +69,12 @@ const App = () => {
 			<View activePanel={activePanel} popout={popout}>
 				<Home id='home' fetchedUser={fetchedUser} go={go}/>
 				<NDS id='nds' go={go} showValue={showNds}/>
-				<Trans id='Trans'go={go}/>
+				<Trans id='Trans'go={go} showValue={showTs}/>
 				<NDFL id='NDFL' go={go} showValue={showNdfl}/>
 				<Immus id='Immus' go={go}/>
 				<ResultNDS id='resultNds' go={go} value={{sumInput,stavkaInput}}/>
 				<ResultNDFL id='resultNdfl' go={go} value={{sumInput,stavkaInput,typeNdfl}}></ResultNDFL>
-				<ResultTrans id='resultTrans' go={go} value={{sumInput,stavkaInput,month}}/>
+				<ResultTrans id='resultTrans' go={go} value={{sumInput,stavkaInput,month,region}}/>
 			</View>	
 	);
 }

@@ -4,41 +4,20 @@ import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
 import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import Cell from '@vkontakte/vkui/dist/components/Cell/Cell';
-import $ from 'jquery';
+//import $ from 'jquery';
 import { render } from 'react-dom';
-import { Icon16Add} from '@vkontakte/icons';
+import { Icon16Add} from '@vkontakte/icons/dist/16/add';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Component from 'react';
 
-class Home extends Component{
-	constructor(){
-		super()
-		this.state={
-			showMe:false
-		}
-	}
-}
-operation()
-{
-	this.setState({
-		showMe:true
-	})
-}
-function Home({ id, go, fetchedUser }) {
-	return (
+
+const Home = ({ id, go, fetchedUser })=>(
 		<Panel id={id}>
 			<PanelHeader>Налоговый калькулятор</PanelHeader>
 
 			<Group title="Посчитать НДС" plus>
 				<Cell onClick={go} data-to="nds" >
-				<Div>{
-					this.state.showMe?
-					<div>sample text</div>
-					:null
-					}
-       <Button before={<Icon16Add/>} onClick={()=>this.operation()}></Button>
-     </Div>
 					НДС
 				</Cell>
 			</Group>
@@ -55,7 +34,6 @@ function Home({ id, go, fetchedUser }) {
 
 		</Panel>
 	);
-}
 		
 Home.propTypes = {
 	id: PropTypes.string.isRequired,

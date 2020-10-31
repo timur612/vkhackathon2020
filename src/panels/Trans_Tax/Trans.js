@@ -41,46 +41,124 @@ const Trans = props =>{
     const [region,setRegion] = React.useState('');
     const [catTs,setCats] = React.useState('');
     const months = useInputValue('');
-    let stavka;
+    let stavka=0;
 
     const [activeViewq,setActiveView] = React.useState('profile');
 
-    if(region=="Республика Саха(Якутия)"){
-        if(catTs=="Автомобили легковые"){
-            if(sumInput<=100){
+    if(region==="Республика Саха(Якутия)"){
+        if(catTs==="Автомобили легковые"){
+            if(sumInput.value()<=100){
                 stavka=8
-            }else if(sumInput>100 && sumInput<=150){
+            }else if(sumInput.value()>100 && sumInput.value()<=150){
                 stavka=13
-            }else if(sumInput>150  && sumInput<=200 ){
+            }else if(sumInput.value()>150  && sumInput.value()<=200 ){
                 stavka=17
-            }else if(sumInput>200  && sumInput<=250 ){
+            }else if(sumInput.value()>200  && sumInput.value()<=250 ){
                 stavka=30
-            }else if(sumInput>250){
+            }else if(sumInput.value()>250){
                 stavka=60
             }
-        }else if(catTs=="Мотоциклы и мотороллеры"){
-            if(sumInput<=20){
+        }else if(catTs==="Мотоциклы и мотороллеры"){
+            if(sumInput.value()<=20){
                 stavka=4
-            }else if(sumInput>20 && sumInput<=35){
+            }else if(sumInput.value()>20 && sumInput.value()<=35){
                 stavka=8
-            }else if(sumInput>35){
+            }else if(sumInput.value()>35){
                 stavka=20
             }
         }
-        else if(catTs=="Грузовые автомобили"){
-            if(sumInput<=100){
+        else if(catTs==="Грузовые автомобили"){
+            if(sumInput.value()<=100){
                 stavka=25
-            }else if(sumInput>100 && sumInput<=150){
+            }else if(sumInput.value()>100 && sumInput.value()<=150){
                 stavka=40
-            }else if(sumInput>150  && sumInput<=200 ){
+            }else if(sumInput.value()>150  && sumInput.value()<=200 ){
                 stavka=50
-            }else if(sumInput>200  && sumInput<=250 ){
+            }else if(sumInput.value()>200  && sumInput.value()<=250 ){
                 stavka=65
-            }else if(sumInput>250){
+            }else if(sumInput.value()>250){
+                stavka=85
+            }
+        }
+    }else if(region==="Россия"){
+        if(catTs==="Автомобили легковые"){
+            if(sumInput.value()<=100){
+                stavka=12
+            }else if(sumInput.value()>100 && sumInput.value()<=125){
+                stavka=25
+            }else if(sumInput.value()>125  && sumInput.value()<=150 ){
+                stavka=35
+            }else if(sumInput.value()>150  && sumInput.value()<=175 ){
+                stavka=45
+            }else if(sumInput.value()>175 && sumInput.value()<=200 ){
+                stavka=50
+            }else if(sumInput.value()>200 && sumInput.value()<=225 ){
+                stavka=65
+            }else if(sumInput.value()>225 && sumInput.value()<=250 ){
+                stavka=75
+            }else if(sumInput.value()>250 ){
+                stavka=150
+            }
+        }else if(catTs==="Мотоциклы и мотороллеры"){
+            if(sumInput.value()<=20){
+                stavka=7
+            }else if(sumInput.value()>20 && sumInput.value()<=35){
+                stavka=15
+            }else if(sumInput.value()>35){
+                stavka=50
+            }
+        }
+        else if(catTs==="Грузовые автомобили"){
+            if(sumInput.value()<=100){
+                stavka=15
+            }else if(sumInput.value()>100 && sumInput.value()<=150){
+                stavka=26
+            }else if(sumInput.value()>150  && sumInput.value()<=200 ){
+                stavka=38
+            }else if(sumInput.value()>200  && sumInput.value()<=250 ){
+                stavka=55
+            }else if(sumInput.value()>250){
+                stavka=70
+            }
+        }
+    }else if(region==="Республика Татарстан"){
+        if(catTs==="Автомобили легковые"){
+            if(sumInput.value()<=100){
+                stavka=10
+            }else if(sumInput.value()>100 && sumInput.value()<=150){
+                stavka=35
+            }else if(sumInput.value()>150  && sumInput.value()<=200 ){
+                stavka=50
+            }else if(sumInput.value()>200  && sumInput.value()<=250 ){
+                stavka=75
+            }else if(sumInput.value()>250){
+                stavka=150
+            }
+        }else if(catTs==="Мотоциклы и мотороллеры"){
+            if(sumInput.value()<=20){
+                stavka=8
+            }else if(sumInput.value()>20 && sumInput.value()<=35){
+                stavka=12
+            }else if(sumInput.value()>35){
+                stavka=50
+            }
+        }
+        else if(catTs==="Грузовые автомобили"){
+            if(sumInput.value()<=100){
+                stavka=25
+            }else if(sumInput.value()>100 && sumInput.value()<=150){
+                stavka=40
+            }else if(sumInput.value()>150  && sumInput.value()<=200 ){
+                stavka=50
+            }else if(sumInput.value()>200  && sumInput.value()<=250 ){
+                stavka=65
+            }else if(sumInput.value()>250){
                 stavka=85
             }
         }
     }
+
+    props.showValue({ls:sumInput.value(),stavka:stavka,month:months.value(),region:region})
 
     return (
         <Panel id={props.id}>
