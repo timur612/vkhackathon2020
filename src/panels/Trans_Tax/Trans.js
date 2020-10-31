@@ -8,23 +8,46 @@ import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
-import {FormLayout,FormLayoutGroup,Input,Select, View} from '@vkontakte/vkui';
+
+import {FormLayout,FormLayoutGroup,Input} from '@vkontakte/vkui';
+
+const styles = {
+    btn: {
+        marginTop:'.5rem'
+    }
+}
+
+const osName = platform();
 
 const Trans = props =>{
     return (
-<View activePanel="select">
-  <Panel id="select">
-    <PanelHeader>
-      Select
-    </PanelHeader>
-    <FormLayout>
-      <Select top="Обычный Select" placeholder="Выберите пол">
-        <option value="m">Мужской</option>
-        <option value="f">Женский</option>
-      </Select>
-    </FormLayout>
-  </Panel>
-</View>
+        <Panel id={props.id}>
+            <PanelHeader
+                left={<PanelHeaderButton onClick={props.go} data-to="home">
+                    {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
+                </PanelHeaderButton>}
+            >
+                Расчет НДС 
+            </PanelHeader>
+            
+                <FormLayout>
+                    <FormLayoutGroup top="НДС из">
+                        <Input type="text" />
+                    </FormLayoutGroup>
+
+                    <FormLayoutGroup top="Ставка(%)">
+                        <Input type="text" />
+                    </FormLayoutGroup>
+                </FormLayout>
+            
+            <Div style={styles.btn}>
+                <Button size="xl" level="2">
+                    Рассчитать налог
+                </Button>
+            </Div>
+            
+	    </Panel>
     );
 }
+
 export default Trans
