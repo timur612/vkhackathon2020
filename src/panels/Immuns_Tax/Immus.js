@@ -1,56 +1,90 @@
-import PropTypes from 'prop-types';
 import React from 'react'
-import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
-import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
-import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton/PanelHeaderButton';
-import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
-import Icon24Back from '@vkontakte/icons/dist/24/back';
-import Div from '@vkontakte/vkui/dist/components/Div/Div';
-import Button from '@vkontakte/vkui/dist/components/Button/Button';
-import { platform, IOS } from '@vkontakte/vkui';
-import {FormLayout,FormLayoutGroup,Input} from '@vkontakte/vkui';
+import ReactDOM from 'react-dom';
+import { Formik, Field, Form, useField, useFormikContext } from 'formik'
+import './styles.css';
 
-const osName = platform();
-const styles = {
-    btn: {
-        marginTop:'.5rem'
+async function fetchNewTextC(a, b) {
+  await new Promise((r) => setTimeout(r, 500));
+  return `textA: ${a}, textB: ${b}`;
+}
+
+const MyField = (props) => {
+  const {
+    values: { textA, textB },
+    setFieldValue,
+  } = useFormikContext();
+  const [field, meta] = useField(props);
+
+  React.useEffect(() => {
+    let isCurrent = true;
+    // your business logic around when to fetch goes here.
+    if (textA.trim() !== '' && textB.trim() !== '') {
+      fetchNewTextC(textA, textB).then((textC) => {
+        if (!!isCurrent) {
+          // prevent setting old values
+          setFieldValue(props.name, textC);
+        }
+      });
     }
+    return () => {
+      isCurrent = false;
+    };
+  }, [textB, textA, setFieldValue, props.name]);
+
+  return (
+    <>
+      <input {...props} {...field} />
+      {!!meta.touched && !!meta.error && <div>{meta.error}</div>}
+    </>
+  );
+};
+function App() {
+  const initialValues = { textA: '', textB: '', textC: '' };
+
+  return (
+    <div className="App">
+      <Formik
+        initialValues={initialValues}
+        onSubmit={async (values) => alert(JSON.stringify(values, null, 2))}
+      >
+        <div className="section">
+          <h1>Dependent Formik fields with Async Request</h1>
+          <p style={{ color: '#555' }}>
+            This is an example of a complex dependent field in Formik v2. In
+            this example, textC's value is set by making an async API request
+            based on the current values of fields textA and textB.
+          </p>
+          <div>
+            <small>
+              <em>
+                Instructions: enter values for textA, and textB, and then watch
+                textC
+              </em>
+            </small>
+          </div>
+          <Form>
+            <label>
+              textA
+              <Field name="textA" />
+            </label>
+            <label>
+              textB
+              <Field name="textB" />
+            </label>
+            <label>
+              textC
+              <MyField name="textC" />
+              <small>
+                (the result of <code>fetchNewTextC(textA, textB))</code>
+              </small>
+            </label>
+            <button type="submit">Submit</button>
+          </Form>
+        </div>
+      </Formik>
+    </div>
+  );
 }
 
-const Immus = props =>{
-    return (
-        <Panel id={props.id}>
-    <PanelHeader
-                left={<PanelHeaderButton onClick={props.go} data-to="home">
-                    {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
-                </PanelHeaderButton>}
-            >
-      Имущественный налог
-    </PanelHeader>
-     <FormLayout>
-            <FormLayoutGroup top="Кадастровый номер">
-            <Input type="number"  maxLength={12} defaultValue="14:36:105037:44"/>
-            </FormLayoutGroup>
-            <FormLayoutGroup top="Кадастровая стоимость (руб.)">
-            <Input type="number"  placeholder="4 000 000"/>
-            </FormLayoutGroup>
-            <FormLayoutGroup top="Площадь объекта (кв.м.)">
-            <Input type="number"  placeholder="50"/>
-            </FormLayoutGroup>
-            <FormLayoutGroup top="Размер доли в праве">
-            <Input type="number"  placeholder="1"/>
-            </FormLayoutGroup>
-            <FormLayoutGroup top="Период владения(мес.)">
-            <Input type="number" maxLength={12} placeholder="12"/>
-            </FormLayoutGroup>
-            <Div style={styles.btn}>
-                <Button size="xl" level="2">
-                    Рассчитать налог
-                </Button>
-            </Div>
-     </FormLayout>
-    </Panel>
-    );
-}
-
-export default Immus
+const rootElement = document.getElementById('root');
+ReactDOM.render(<App />, rootElement);
