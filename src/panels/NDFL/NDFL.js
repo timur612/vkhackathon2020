@@ -21,7 +21,7 @@ const styles = {
 
 const osName = platform();
 
-function useInputValue(defaultValue=13){
+function useInputValue(defaultValue=''){
     const [value,setValue] = React.useState(defaultValue);
 
     return {
@@ -41,7 +41,7 @@ const NDFL = props =>{
     const [activeViewq,setActiveView] = React.useState('profile');
 
     const sumInput = useInputValue('');
-    const stavkaInput = useInputValue(13);
+    const stavkaInput = useInputValue('');
 
     props.showValue({sumInput:sumInput.value(),stavkaInput:stavkaInput.value(),ras});
     console.log(ras);
@@ -83,14 +83,19 @@ const NDFL = props =>{
                                         ? <Input  type="text" value={13} placeholder="13" disabled {...stavkaInput.bind}/> 
                                         : (stavka==='Иностранцы(30%)') ? <Input  type="text" value={30} placeholder="30" disabled {...stavkaInput.bind}/> 
                                         : <Input {...stavkaInput.bind} type="number"/>}
-                            
                         </FormLayoutGroup>
                     </FormLayout>
                     
                     <Div style={styles.btn}>
-                        <Button size="xl" level="2" onClick={props.go} data-to="resultNdfl">
+                        {sumInput.value()!=='' && stavkaInput.value()!=='' ? 
+                            <Button size="xl" level="2" onClick={props.go} data-to="resultNdfl">
+                            Рассчитать налог
+                        </Button>:
+                        <Button disabled size="xl" level="2" onClick={props.go} data-to="resultNdfl">
                             Рассчитать налог
                         </Button>
+                        }
+                        
                     </Div>
                     
                 </Panel>

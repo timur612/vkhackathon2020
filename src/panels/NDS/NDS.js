@@ -19,7 +19,7 @@ const styles = {
 
 const osName = platform();
 
-function useInputValue(defaultValue=0){
+function useInputValue(defaultValue=''){
     const [value,setValue] = React.useState(defaultValue);
 
     return {
@@ -52,18 +52,21 @@ const NDS = props=> {
                 
                     <FormLayout>
                         <FormLayoutGroup top="НДС из">
-                            <Input type="number" {...sumInput.bind} onInput={()=>{if(sumInput.value()<0){sumInput.clear()}}}/>
+                            <Input required type="number" {...sumInput.bind} onInput={()=>{if(sumInput.value()<0){sumInput.clear()}}}/>
                         </FormLayoutGroup>
 
                         <FormLayoutGroup top="Ставка(%)">
-                            <Input type="number" {...stavkaInput.bind}/>
+                            <Input required type="number" {...stavkaInput.bind}/>
                         </FormLayoutGroup>
                     </FormLayout>
                 <Div style={styles.btn}>
                     
-                    <Button size="xl" level="2" onClick={props.go} data-to={"resultNds"} > 
+                    {sumInput.value()!=='' && stavkaInput.value()!=='' ? 
+                        <Button size="xl" level="2" onClick={props.go} data-to={"resultNds"} > 
                         Рассчитать налог
-                    </Button>
+                        </Button> : <Button disabled size="xl" level="2" onClick={props.go} data-to={"resultNds"} > 
+                        Рассчитать налог
+                        </Button>}
                 </Div>
 	    </Panel>
     );
