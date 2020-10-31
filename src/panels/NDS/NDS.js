@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { platform, IOS } from '@vkontakte/vkui';
+import { platform, IOS, Separator } from '@vkontakte/vkui';
 import React from 'react'
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
@@ -19,7 +19,32 @@ const styles = {
 
 const osName = platform();
 
+function useInputValue(defaultValue=''){
+    const [value,setValue] = React.useState(defaultValue);
+
+    return {
+        bind:{
+            value,
+            onChange: event => setValue(event.target.value)
+        },
+        clear: ()=> setValue(''),
+        value: () => value
+    }
+}
+
 const NDS = props=> {
+    const sumInput = useInputValue('');
+    const stavkaInput = useInputValue('');
+    
+    let sumnds;
+    let sumwithoutnds;
+
+    function ndsCount(sum,stavka){
+        let sumNds = sum*stavka;
+        let sumWithoutNds = sum-(sum*stavka);
+        return {sumNds,sumWithoutNds};
+    }
+    //console.log(ndsCount(parseInt(sumInput.value()),parseInt(stavkaInput.value())/100).sumNds);
     return (
         <Panel id={props.id}>
             <PanelHeader
@@ -32,22 +57,26 @@ const NDS = props=> {
             
                 <FormLayout>
                     <FormLayoutGroup top="НДС из">
-                        <Input type="text" />
+                        <Input type="number" {...sumInput.bind} type="text" />
                     </FormLayoutGroup>
 
                     <FormLayoutGroup top="Ставка(%)">
-                        <Input type="text" />
+                        <Input type="number" {...stavkaInput.bind} type="text" />
                     </FormLayoutGroup>
                 </FormLayout>
-            
+            {sumnds=ndsCount(parseInt(sumInput.value()),parseInt(stavkaInput.value())/100).sumNds}
+            {sumwithoutnds=ndsCount(parseInt(sumInput.value()),parseInt(stavkaInput.value())/100).sumWithoutNds}
             <Div style={styles.btn}>
-                <Button size="xl" level="2" onClick={props.go} data-to="resultNds">
+                <Button size="xl" level="2" onClick={props.go} data-to="resultNds" 
+                sumNds={sumnds} 
+                sumWithoutNds={sumwithoutnds}> 
                     Рассчитать налог
                 </Button>
             </Div>
             
 	    </Panel>
     );
+    
 }
 
 NDS.propTypes = {

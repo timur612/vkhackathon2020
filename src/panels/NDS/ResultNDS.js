@@ -13,7 +13,7 @@ import {View} from '@vkontakte/vkui';
 
 const osName = platform();
 
-const ResultNDS = props =>{
+const ResultNDS = ({props,sumNds,sumWithoutNds}) =>{
     return (
     <Panel id={props.id}>
         <PanelHeader
@@ -23,6 +23,7 @@ const ResultNDS = props =>{
             >
                 Результат расчета НДС 
         </PanelHeader>
+       {sumNds} {sumWithoutNds}
     </Panel>
     );
     

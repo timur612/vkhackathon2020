@@ -9,6 +9,9 @@ import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
 import { platform, IOS } from '@vkontakte/vkui';
 import {FormLayout,FormLayoutGroup,Input} from '@vkontakte/vkui';
+
+const osName = platform();
+
 const Immus = props =>{
     return (
         <Panel id={props.id}>

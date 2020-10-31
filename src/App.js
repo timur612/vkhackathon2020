@@ -13,7 +13,7 @@ import NDFL from './panels/NDFL/NDFL';
 import Trans from './panels/Trans_Tax/Trans';
 import ResultNDS from './panels/NDS/ResultNDS';
 
-const App = () => {
+const App = ({sumNds,sumWithoutNds}) => {
 	const [activePanel, setActivePanel] = useState('home');
 	
 	const [fetchedUser, setUser] = useState(null);
@@ -46,7 +46,7 @@ const App = () => {
 			<Trans id='Trans'go={go}/>
 			<NDFL id='NDFL' go={go}/>
 			<Immus id='Immus' go={go}/>
-			<ResultNDS id='resultNds' go={go}/>
+			<ResultNDS id='resultNds' sumNds={100} sumWithoutNds={100}  go={go}/>
 		</View>
 	);
 }
