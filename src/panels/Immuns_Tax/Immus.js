@@ -11,6 +11,11 @@ import { platform, IOS } from '@vkontakte/vkui';
 import {FormLayout,FormLayoutGroup,Input} from '@vkontakte/vkui';
 
 const osName = platform();
+const styles = {
+    btn: {
+        marginTop:'.5rem'
+    }
+}
 
 const Immus = props =>{
     return (
@@ -24,7 +29,7 @@ const Immus = props =>{
     </PanelHeader>
      <FormLayout>
             <FormLayoutGroup top="Кадастровый номер">
-            <Input type="number"  />
+            <Input type="number"  maxLength={12}/>
             </FormLayoutGroup>
             <FormLayoutGroup top="Кадастровая стоимость (руб.)">
             <Input type="number"  />
@@ -36,8 +41,13 @@ const Immus = props =>{
             <Input type="number"  />
             </FormLayoutGroup>
             <FormLayoutGroup top="Период владения(мес.)">
-            <Input type="number" maxcount="12" />
+            <Input type="number" maxLength={12} />
             </FormLayoutGroup>
+            <Div style={styles.btn}>
+                <Button size="xl" level="2">
+                    Рассчитать налог
+                </Button>
+            </Div>
      </FormLayout>
     </Panel>
     );
