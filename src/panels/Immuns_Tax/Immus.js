@@ -29,19 +29,19 @@ const Immus = props =>{
     </PanelHeader>
      <FormLayout>
             <FormLayoutGroup top="Кадастровый номер">
-            <Input type="number"  maxLength={12}/>
+            <Input type="number"  maxLength={12} defaultValue="14:36:105037:44"/>
             </FormLayoutGroup>
             <FormLayoutGroup top="Кадастровая стоимость (руб.)">
-            <Input type="number"  />
+            <Input type="number"  placeholder="4 000 000"/>
             </FormLayoutGroup>
             <FormLayoutGroup top="Площадь объекта (кв.м.)">
-            <Input type="number"  />
+            <Input type="number"  placeholder="50"/>
             </FormLayoutGroup>
             <FormLayoutGroup top="Размер доли в праве">
-            <Input type="number"  />
+            <Input type="number"  placeholder="1"/>
             </FormLayoutGroup>
             <FormLayoutGroup top="Период владения(мес.)">
-            <Input type="number" maxLength={12} />
+            <Input type="number" maxLength={12} placeholder="12"/>
             </FormLayoutGroup>
             <Div style={styles.btn}>
                 <Button size="xl" level="2">
