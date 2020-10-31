@@ -22,8 +22,8 @@ const styles = {
 const osName = platform();
 
 const NDFL = props =>{
-    const [ras,setRas] = React.useState('');
-    const [stavka,setStavka] = React.useState('');
+    const [ras,setRas] = React.useState('raschet');
+    const [stavka,setStavka] = React.useState('stavka');
     const [activeViewq,setActiveView] = React.useState('profile');
     return (
         <Panel id={props.id}>
