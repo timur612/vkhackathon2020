@@ -185,8 +185,8 @@ const Trans = props =>{
                                 onClick={() => setActiveView('catTs')}
                         >{catTs}</SelectMimicry>
 
-                        <FormLayoutGroup top="Мощность в Л.С">
-                            <Input {...sumInput.bind} type="number" />
+                        <FormLayoutGroup top="Мощность в Л.С.">
+                            <Input placeholder="Введите мощность в л.с." {...sumInput.bind} type="number" />
                         </FormLayoutGroup>
 
                         <FormLayoutGroup top="Количество месяцев эксплуатации">
