@@ -90,8 +90,8 @@ const NDFL = props =>{
                         >{ras}</SelectMimicry>
 
                         <FormLayoutGroup top="Сумма">
-                            {ras==='' ?<Input disabled type="number" /> 
-                                      :<Input {...sumInput.bind} type="number" />}
+                            {ras==='' ?<Input placeholder="Введите сумму" disabled type="number" /> 
+                                      :<Input placeholder="Введите сумму" {...sumInput.bind} type="number" />}
                         </FormLayoutGroup>
 
                         <Separator style={{ margin: '12px 0' }} />
@@ -106,7 +106,7 @@ const NDFL = props =>{
                             {stavka===''?<Input disabled type="number" />:(stavka==='Обычные доходы(13%)') 
                                         ? <Input  type="text" value={13} placeholder="13" disabled defaultValue="13"/> 
                                         : (stavka==='Иностранцы(30%)') ? <Input  type="text" value={30} placeholder="30" disabled defaultValue="30"/> 
-                                        : <Input {...stavkaInput.bind} type="number"/>}
+                                        : <Input placeholder="Введите ставку" {...stavkaInput.bind} type="number"/>}
                         </FormLayoutGroup>
                     </FormLayout>
                     
@@ -183,11 +183,7 @@ const NDFL = props =>{
             </View>
             {/* Ставка view для selectMimicry */}
             <Group>
-			<h1 style={styles.h1}>Последний день уплаты налога</h1>
-			<Group>
-				<h2 styles={styles.h1}>Декабрь 2020 г.</h2>
-				<img src="././img/Ячейки.svg"></img>
-			</Group>
+			
 		</Group>
         </Root>
         </Panel>

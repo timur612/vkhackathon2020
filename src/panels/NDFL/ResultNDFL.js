@@ -7,7 +7,7 @@ import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
-import cal from '../../img/Ячейки.png';
+import cal from '../../img/Ячейки.svg';
 
 import {Title } from '@vkontakte/vkui';
 const styles = {
@@ -65,7 +65,7 @@ const ResultNDFL = (props) =>{
         
         <Div>
             <Title level="1" style={styles.h1}>Последний день уплаты налога</Title>
-            <Title level="2" weight="regular" style={{marginBottom:"1.5rem"}}>Декабрь 2020 г.</Title>
+            <Title level="2" align="center" weight="regular" style={{marginBottom:"1.5rem"}}>Декабрь 2020 г.</Title>
             <img src={cal}></img>
         </Div>
     </Panel>

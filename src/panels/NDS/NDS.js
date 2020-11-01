@@ -51,11 +51,11 @@ const NDS = props=> {
                 
                     <FormLayout>
                         <FormLayoutGroup top="НДС из">
-                            <Input required type="number" {...sumInput.bind} onInput={()=>{if(sumInput.value()<0){sumInput.clear()}}}/>
+                            <Input placeholder="Введите сумму" required type="number" {...sumInput.bind} onInput={()=>{if(sumInput.value()<0){sumInput.clear()}}}/>
                         </FormLayoutGroup>
 
                         <FormLayoutGroup top="Ставка(%)">
-                            <Input required type="number" {...stavkaInput.bind}/>
+                            <Input placeholder="20%" required type="number" {...stavkaInput.bind}/>
                         </FormLayoutGroup>
                     </FormLayout>
                 <Div style={styles.btn}>
