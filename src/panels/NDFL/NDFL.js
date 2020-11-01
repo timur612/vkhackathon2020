@@ -187,7 +187,7 @@ const NDFL = props =>{
 			<h1 style={styles.h1}>Последний день уплаты налога</h1>
 			<Group>
 				<h2 styles={styles.h1}>Декабрь 2020 г.</h2>
-				<img src="img/Ячейки.png"></img>
+				<img src="././img/Ячейки.png"></img>
 			</Group>
 		</Group>
         </Root>
