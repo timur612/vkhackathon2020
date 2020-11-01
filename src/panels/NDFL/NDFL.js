@@ -8,6 +8,13 @@ import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
+import Calendar from 'react-calendar';
+
+import onClick from 'react-calendar';
+import state from 'react-calendar';
+import activeStartDate from 'react-calendar';
+import MonthView from 'react-calendar';
+import isCalendarType from 'react-calendar';
 
 
 import {FormLayout,FormLayoutGroup,Input,SelectMimicry,View,Root,Group,List,Cell,Separator} from '@vkontakte/vkui';
@@ -35,6 +42,10 @@ function useInputValue(defaultValue=''){
 }
 
 const NDFL = props =>{
+    state = {
+        date: activeStartDate(new Date(2020, 9, 12)),
+      }
+      onClick = date => this.setState({ date })
     const [ras,setRas] = React.useState('');
     const [stavka,setStavka] = React.useState('');
 
@@ -45,6 +56,7 @@ const NDFL = props =>{
 
     props.showValue({sumInput:sumInput.value(),stavkaInput:stavkaInput.value(),ras});
     console.log(ras);
+    
     return (
         <Panel id={props.id}>
             <Root activeView={activeViewq}>
@@ -158,12 +170,22 @@ const NDFL = props =>{
                 </Panel>
             </View>
             {/* Ставка view для selectMimicry */}
-
+            <Calendar onClick={this.onClick}/>
         </Root>
         </Panel>
     );
 }
 
+MonthView.propTypes = {
+    activeStartDate: PropTypes.instanceOf(Date).isRequired,
+    calendarType: isCalendarType,
+    formatShortWeekday: PropTypes.func,
+    locale: PropTypes.string,
+    onClickWeekNumber: PropTypes.func,
+    onMouseLeave: PropTypes.func,
+    showFixedNumberOfWeeks: PropTypes.bool,
+    showWeekNumbers: PropTypes.bool,
+  };
 NDFL.propTypes = {
     props: PropTypes.object.isRequired
 }
