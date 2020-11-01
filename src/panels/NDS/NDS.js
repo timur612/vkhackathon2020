@@ -37,7 +37,6 @@ const NDS = props=> {
     const stavkaInput = useInputValue('');
 
     //props.value = sumInput.value();
-
     props.showValue({sumInput:sumInput.value(),stavkaInput:stavkaInput.value()})
     //console.log(ndsCount(parseInt(sumInput.value()),parseInt(stavkaInput.value())/100).sumNds);
     return (

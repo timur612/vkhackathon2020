@@ -190,7 +190,7 @@ const Trans = props =>{
                         </FormLayoutGroup>
 
                         <FormLayoutGroup top="Количество месяцев эксплуатации">
-                            {<Input placeholder="1 - 12" {...months.bind} type="number"/>}
+                            {<Input placeholder="1 - 12 месяцев" {...months.bind} type="number"/>}
                             
                         </FormLayoutGroup>
                     <Div style={styles.btn}>

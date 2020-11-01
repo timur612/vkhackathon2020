@@ -6,11 +6,14 @@ import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import Cell from '@vkontakte/vkui/dist/components/Cell/Cell';
 //import $ from 'jquery';
 import { render } from 'react-dom';
-import { Icon16Add} from '@vkontakte/icons/dist/16/add';
+import Icon28ChevronDownOutline from '@vkontakte/icons/dist/28/chevron_down_outline';
+import Icon28ArrowUpOutline from '@vkontakte/icons/dist/28/arrow_up_outline';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Component from 'react';
-import {Link} from '@vkontakte/vkui'
+import {Link, Separator,Title,Text, FixedLayout} from '@vkontakte/vkui';
+import Collapsible from 'react-collapsible';
+
 
 const styles = {
 	h1: {
@@ -21,38 +24,63 @@ const styles = {
 	}
 }
 
+
+
 const Home = ({ id, go, fetchedUser })=>(
 		<Panel id={id}>
 			<PanelHeader>Налоговый калькулятор</PanelHeader>
-
-			<Group title="Посчитать НДС" plus>
-				<Cell onClick={go} data-to="nds" >
-					НДС
+			
+			<Group title="Посчитать НДС">
+				<Cell>
+					<Title onClick={go} data-to="nds">НДС</Title>
 				</Cell>
+				<Collapsible  trigger={<Icon28ChevronDownOutline style={{color:"#3F8AE0"}}/>}>
+					<Div><p>Налог на добавочную стоимость (НДС) — это косвенный налог. Исчисление производится продавцом при реализации товаров (работ, услуг, имущественных прав) покупателю.</p></Div>		
+				</Collapsible>
 			</Group>
 			<Group title="Посчитать НДФЛ">
 				<Cell onClick={go} data-to="NDFL">
 					НДФЛ
+					<Icon28ChevronDownOutline style={{color:"#3F8AE0",float:"right"}}/>
 				</Cell>
 			</Group>
 			<Group title="Посчитать транспортный налог">
 				<Cell onClick={go} data-to="Trans">
 					Транспортный налог
+					<Icon28ChevronDownOutline style={{color:"#3F8AE0",float:"right"}}/>
 				</Cell>
 			</Group>
+			
+			
 			<Group>
-			<div className="warpper">
-			<h1 style={styles.h1}>Ближайшие налоговые изменения</h1>
-			<Group  description="с 1 января 2021г."> 
-			<Link href="https://buhguru.com/news/minfin-rasshirit-2021-vidy-deyatelnosti-ip-psn-perechen.html" style={styles.a}>Новые виды деятельности ПСН.</Link>
-        	</Group>
-			<Group  description="с 1 января 2021г."> 
-			<Link href="https://www.nalog.ru/rn91/news/tax_doc_news/9370241/." style={styles.a}>Отмена ЕНВД.</Link>
-        	</Group>
-			<Group  description="с 1 января 2021г."> 
-			<Link href="https://www.nalog.ru/rn91/news/tax_doc_news/9370241/." style={styles.a}>Отмена ЕНВД.</Link>
-        	</Group>
-			</div>
+			<Div>
+				<Title level="2">Ближайшие налоговые изменения</Title>
+				<Group > 
+					<Text style={{color:"#6D7885"}}>с 1 января 2021г.</Text>
+					<Title level="3" weight="regular"  style={styles.a}>Изменения налогообложения ИТ-компаний</Title>
+					<Link href="https://vc.ru/legal/144217-gosduma-prinyala-zakon-o-nalogovom-manevre-dlya-it-s-2021-goda-nalog-na-pribyl-sostavit-3-i-7-6-strahovye-vznosy">Источник</Link>
+				</Group>
+				<Separator style={{ margin: '12px 0' }} />
+				<Group > 
+					<Text style={{color:"#6D7885"}}>с 1 января 2021г.</Text>
+					<Title level="3" weight="regular"  style={styles.a}>Прогрессивная ставка НДФЛ в 15%</Title>
+					<Link href="https://www.rbc.ru/economics/24/06/2020/5ef226b29a794766cc4d2343">Источник</Link>
+				</Group>
+				<Separator style={{ margin: '12px 0' }} />
+				<Group > 
+					<Text style={{color:"#6D7885"}}>с 1 января 2021г.</Text>
+					<Title level="3" weight="regular"  style={styles.a}>Переходный период для субъектов малого и среднего бизнеса</Title>
+					<Link href="https://www.nalog.ru/rn77/news/activities_fts/9971710/">Источник</Link>
+				</Group>
+				<Separator style={{ margin: '12px 0' }} />
+				<Group>
+					<Text style={{color:"#6D7885"}}>с 1 января 2021г.</Text>
+					<Title level="3" weight="regular"  style={styles.a}>Налог на проценты по вкладам</Title>
+					<Link href="https://tass.ru/ekonomika/8122739">Источник</Link>
+				</Group>
+				<Separator style={{ margin: '12px 0' }} />
+				
+			</Div>
 		</Group>
 		</Panel>
 	);
