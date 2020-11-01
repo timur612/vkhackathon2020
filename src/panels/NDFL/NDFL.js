@@ -40,11 +40,12 @@ function useInputValue(defaultValue=''){
         value: () => value
     }
 }
-onClick = date => this.setState({ date })
+
 const NDFL = props =>{
     state = {
         date: activeStartDate(new Date(2020, 9, 12)),
       }
+      onClick = date => this.setState({ date })
     const [ras,setRas] = React.useState('');
     const [stavka,setStavka] = React.useState('');
 
@@ -174,6 +175,7 @@ const NDFL = props =>{
         </Panel>
     );
 }
+
 MonthView.propTypes = {
     activeStartDate: PropTypes.instanceOf(Date).isRequired,
     calendarType: isCalendarType,
