@@ -41,7 +41,6 @@ const Home = ({ id, go, fetchedUser })=>(
 			<Group title="Посчитать НДФЛ">
 				<Cell onClick={go} data-to="NDFL">
 					НДФЛ
-					<Icon28ChevronDownOutline style={{color:"#3F8AE0",float:"right"}}/>
 				</Cell>
 				<Collapsible styles={{}} trigger={<Icon28ChevronDownOutline style={{color:"#3F8AE0",float:"right",marginBottom:"5rem"}}/>}>
 					<Div><p>Налог на доходы физических лиц (НДФЛ) — основной вид прямых налогов. Исчисляется в процентах от совокупного дохода физических лиц за вычетом документально подтверждённых расходов, в соответствии с действующим законодательством.</p></Div>		
@@ -50,7 +49,6 @@ const Home = ({ id, go, fetchedUser })=>(
 			<Group title="Посчитать транспортный налог">
 				<Cell onClick={go} data-to="Trans">
 					Транспортный налог
-					<Icon28ChevronDownOutline style={{color:"#3F8AE0",float:"right"}}/>
 				</Cell>
 				<Collapsible styles={{}} trigger={<Icon28ChevronDownOutline style={{color:"#3F8AE0",float:"right",marginBottom:"5rem"}}/>}>
 					<Div><p>Транспортный налог — налог, взимаемый с владельцев зарегистрированных транспортных средств.</p></Div>		
