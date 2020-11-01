@@ -31,6 +31,7 @@ function useInputValue(defaultValue=''){
             onChange: event => setValue(event.target.value)
         },
         clear: ()=> setValue(0),
+        changeValue: (value)=> setValue(value),
         value: () => value
     }
 }
@@ -43,14 +44,24 @@ const NDFL = props =>{
    
     const [ras,setRas] = React.useState('');
     const [stavka,setStavka] = React.useState('');
-
+    
     const [activeViewq,setActiveView] = React.useState('profile');
 
     const sumInput = useInputValue('');
     const stavkaInput = useInputValue('');
 
-    props.showValue({sumInput:sumInput.value(),stavkaInput:stavkaInput.value(),ras});
+    let stavkaNew = '';
+    if(stavka==="Обычные доходы(13%)"){
+        stavkaNew=13;
+    }else if(stavka==="Иностранцы(30%)"){
+        stavkaNew=30;
+    }else{
+        stavkaNew=stavkaInput.value();
+    }
+    props.showValue({sumInput:sumInput.value(),stavkaInput:stavkaNew,ras});
     console.log(ras);
+   
+   
     
     return (
         <Panel id={props.id}>
@@ -87,14 +98,14 @@ const NDFL = props =>{
 
                         <FormLayoutGroup top="Ставка(%)">
                             {stavka===''?<Input disabled type="number" />:(stavka==='Обычные доходы(13%)') 
-                                        ? <Input  type="text" value={13} placeholder="13" disabled {...stavkaInput.bind}/> 
-                                        : (stavka==='Иностранцы(30%)') ? <Input  type="text" value={30} placeholder="30" disabled {...stavkaInput.bind}/> 
+                                        ? <Input  type="text" value={13} placeholder="13" disabled defaultValue="13"/> 
+                                        : (stavka==='Иностранцы(30%)') ? <Input  type="text" value={30} placeholder="30" disabled defaultValue="30"/> 
                                         : <Input {...stavkaInput.bind} type="number"/>}
                         </FormLayoutGroup>
                     </FormLayout>
                     
                     <Div style={styles.btn}>
-                        {sumInput.value()!=='' && stavkaInput.value()!=='' ? 
+                        {sumInput.value()!=='' && stavkaNew!=='' ? 
                             <Button size="xl" level="2" onClick={props.go} data-to="resultNdfl">
                             Рассчитать налог
                         </Button>:
