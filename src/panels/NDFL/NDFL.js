@@ -11,7 +11,7 @@ import Button from '@vkontakte/vkui/dist/components/Button/Button';
 import Calendar from 'react-calendar';
 
 
-import {FormLayout,FormLayoutGroup,Input,SelectMimicry,View,Root,Group,List,Cell,Separator} from '@vkontakte/vkui';
+import {FormLayout,FormLayoutGroup,Input,SelectMimicry,View,Root,Group,List,Cell,Separator,Title} from '@vkontakte/vkui';
 import Icon24Done from '@vkontakte/icons/dist/24/done'
 
 const styles = {
@@ -123,7 +123,6 @@ const NDFL = props =>{
                     </Div>
                     
                 </Panel>
-                
             </View>
 
             {/* Расчет view для selectMimicry*/}

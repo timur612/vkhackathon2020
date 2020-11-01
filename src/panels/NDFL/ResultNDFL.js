@@ -7,9 +7,20 @@ import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
+import cal from '../../img/Ячейки.png';
 
 import {Title } from '@vkontakte/vkui';
-
+const styles = {
+    btn: {
+        marginTop:'.5rem'
+    },
+    h1: {
+            textAlign:"center",
+        },
+    a:{
+            marginBottom: 10,
+        }
+}
 const osName = platform();
 
 const ResultNDFL = (props) =>{
@@ -50,6 +61,12 @@ const ResultNDFL = (props) =>{
             {props.value.typeNdfl==='Посчитать налог'?
                 <Title  weight="medium" style={{ marginBottom: 16 }}>{ndflWithout(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
             : <Title  weight="medium" style={{ marginBottom: 16 }}>{ndflOklad(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >}
+        </Div>
+        
+        <Div>
+            <Title level="1" style={styles.h1}>Последний день уплаты налога</Title>
+            <Title level="2" weight="regular" style={{marginBottom:"1.5rem"}}>Декабрь 2020 г.</Title>
+            <img src={cal}></img>
         </Div>
     </Panel>
     );
