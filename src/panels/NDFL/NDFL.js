@@ -17,7 +17,13 @@ import Icon24Done from '@vkontakte/icons/dist/24/done'
 const styles = {
     btn: {
         marginTop:'.5rem'
-    }  
+    },
+    h1: {
+            textAlign:"center",
+        },
+    a:{
+            marginBottom: 10,
+        }
 }
 
 const osName = platform();
@@ -166,7 +172,13 @@ const NDFL = props =>{
                 </Panel>
             </View>
             {/* Ставка view для selectMimicry */}
-            
+            <Group>
+			<h1 style={styles.h1}>Последний день уплаты налога</h1>
+			<Group>
+				<h2 styles={styles.h1}>Декабрь 2020 г.</h2>
+				<img src="img/Ячейки.png"></img>
+			</Group>
+		</Group>
         </Root>
         </Panel>
     );

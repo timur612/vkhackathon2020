@@ -13,7 +13,7 @@ import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Component from 'react';
 import {Link, Separator,Title,Text, FixedLayout} from '@vkontakte/vkui';
 import Collapsible from 'react-collapsible';
-
+import Calendar from 'react-calendar';
 
 const styles = {
 	h1: {
@@ -31,9 +31,8 @@ const styles = {
 	}
 }
 
+const Home = ({ id, go, fetchedUser, Calendar })=>(
 
-
-const Home = ({ id, go, fetchedUser })=>(
 		<Panel id={id}>
 			<PanelHeader>Налоговый калькулятор</PanelHeader>
 			
