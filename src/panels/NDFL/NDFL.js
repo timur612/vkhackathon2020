@@ -42,10 +42,11 @@ function useInputValue(defaultValue=''){
 }
 
 const NDFL = props =>{
-    state = {
-        date: activeStartDate(new Date(2020, 9, 12)),
-      }
-      onClick = date => this.setState({ date })
+   const [date,setDate] = React.useState('');
+   function onChange(){
+    setDate(new Date());
+   }
+   
     const [ras,setRas] = React.useState('');
     const [stavka,setStavka] = React.useState('');
 
@@ -111,6 +112,7 @@ const NDFL = props =>{
                     </Div>
                     
                 </Panel>
+                
             </View>
 
             {/* Расчет view для selectMimicry*/}
@@ -170,24 +172,18 @@ const NDFL = props =>{
                 </Panel>
             </View>
             {/* Ставка view для selectMimicry */}
-            <Calendar onClick={this.onClick}/>
+            <Calendar
+                    onChange={onChange}
+                    value={date}
+                />
         </Root>
         </Panel>
     );
 }
 
-MonthView.propTypes = {
-    activeStartDate: PropTypes.instanceOf(Date).isRequired,
-    calendarType: isCalendarType,
-    formatShortWeekday: PropTypes.func,
-    locale: PropTypes.string,
-    onClickWeekNumber: PropTypes.func,
-    onMouseLeave: PropTypes.func,
-    showFixedNumberOfWeeks: PropTypes.bool,
-    showWeekNumbers: PropTypes.bool,
-  };
+
 NDFL.propTypes = {
     props: PropTypes.object.isRequired
 }
 
-export default NDFL
+export default NDFL;
