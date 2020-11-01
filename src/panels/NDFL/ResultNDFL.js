@@ -65,7 +65,7 @@ const ResultNDFL = (props) =>{
         
         <Div>
             <Title level="1" style={styles.h1}>Последний день уплаты налога</Title>
-            <Title level="2" weight="regular" style={{marginBottom:"1.5rem"}}>Декабрь 2020 г.</Title>
+            <Title level="2" align="center" weight="regular" style={{marginBottom:"1.5rem"}}>Декабрь 2020 г.</Title>
             <img src={cal}></img>
         </Div>
     </Panel>
