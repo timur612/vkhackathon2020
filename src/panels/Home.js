@@ -34,7 +34,7 @@ const Home = ({ id, go, fetchedUser })=>(
 				<Cell>
 					<Title onClick={go} data-to="nds">НДС</Title>
 				</Cell>
-				<Collapsible  trigger={<Icon28ChevronDownOutline style={{color:"#3F8AE0"}}/>}>
+				<Collapsible styles={{}} trigger={<Icon28ChevronDownOutline style={{color:"#3F8AE0",float:"right",marginBottom:"5rem"}}/>}>
 					<Div><p>Налог на добавочную стоимость (НДС) — это косвенный налог. Исчисление производится продавцом при реализации товаров (работ, услуг, имущественных прав) покупателю.</p></Div>		
 				</Collapsible>
 			</Group>
