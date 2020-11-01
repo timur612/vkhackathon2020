@@ -21,6 +21,13 @@ const styles = {
 	},
 	a:{
 		marginBottom: 10,
+	},
+	icon:{
+		marginRight:"1rem",
+		color:"#3F8AE0",
+		position:"absolute",
+		right:"0",
+		top:"0"
 	}
 }
 
@@ -30,27 +37,27 @@ const Home = ({ id, go, fetchedUser })=>(
 		<Panel id={id}>
 			<PanelHeader>Налоговый калькулятор</PanelHeader>
 			
-			<Group title="Посчитать НДС">
+			<Group title="Посчитать НДС" style={{position:"relative"}}>
 				<Cell>
 					<Title onClick={go} data-to="nds">НДС</Title>
 				</Cell>
-				<Collapsible styles={{}} trigger={<Icon28ChevronDownOutline style={{color:"#3F8AE0",float:"right",marginBottom:"5rem"}}/>}>
+				<Collapsible trigger={<Icon28ChevronDownOutline style={styles.icon}/>}>
 					<Div><p>Налог на добавочную стоимость (НДС) — это косвенный налог. Исчисление производится продавцом при реализации товаров (работ, услуг, имущественных прав) покупателю.</p></Div>		
 				</Collapsible>
 			</Group>
-			<Group title="Посчитать НДФЛ">
-				<Cell onClick={go} data-to="NDFL">
-					НДФЛ
+			<Group title="Посчитать НДФЛ" style={{position:"relative"}}>
+				<Cell>
+					<Title onClick={go} data-to="NDFL">НДФЛ</Title>
 				</Cell>
-				<Collapsible styles={{}} trigger={<Icon28ChevronDownOutline style={{color:"#3F8AE0",float:"right",marginBottom:"5rem"}}/>}>
+				<Collapsible trigger={<Icon28ChevronDownOutline style={styles.icon}/>}>
 					<Div><p>Налог на доходы физических лиц (НДФЛ) — основной вид прямых налогов. Исчисляется в процентах от совокупного дохода физических лиц за вычетом документально подтверждённых расходов, в соответствии с действующим законодательством.</p></Div>		
 				</Collapsible>
 			</Group>
-			<Group title="Посчитать транспортный налог">
-				<Cell onClick={go} data-to="Trans">
-					Транспортный налог
+			<Group title="Посчитать транспортный налог" style={{position:"relative"}}>
+				<Cell >
+					<Title onClick={go} data-to="Trans">Транспортный налог</Title>
 				</Cell>
-				<Collapsible styles={{}} trigger={<Icon28ChevronDownOutline style={{color:"#3F8AE0",float:"right",marginBottom:"5rem"}}/>}>
+				<Collapsible trigger={<Icon28ChevronDownOutline style={styles.icon}/>}>
 					<Div><p>Транспортный налог — налог, взимаемый с владельцев зарегистрированных транспортных средств.</p></Div>		
 				</Collapsible>
 			</Group>
