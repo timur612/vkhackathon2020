@@ -10,12 +10,6 @@ import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
 import Calendar from 'react-calendar';
 
-import onClick from 'react-calendar';
-import state from 'react-calendar';
-import activeStartDate from 'react-calendar';
-import MonthView from 'react-calendar';
-import isCalendarType from 'react-calendar';
-
 
 import {FormLayout,FormLayoutGroup,Input,SelectMimicry,View,Root,Group,List,Cell,Separator} from '@vkontakte/vkui';
 import Icon24Done from '@vkontakte/icons/dist/24/done'
@@ -172,10 +166,7 @@ const NDFL = props =>{
                 </Panel>
             </View>
             {/* Ставка view для selectMimicry */}
-            <Calendar
-                    onChange={onChange}
-                    value={date}
-                />
+            
         </Root>
         </Panel>
     );

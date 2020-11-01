@@ -1,9 +1,0 @@
-@keyframes arrow{
-    from {transform: rotate(0); }
-    to {transform: rotate(180); }
-}
-
-.arrowAnim{
-    animation: arrow 1.5s;
-    transform: rotate(180);
-}

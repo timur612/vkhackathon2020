@@ -13,13 +13,7 @@ import Trans from './panels/Trans_Tax/Trans';
 import ResultNDS from './panels/NDS/ResultNDS';
 import ResultNDFL from './panels/NDFL/ResultNDFL';
 import ResultTrans from './panels/Trans_Tax/ResultTrans';
-import Calendar from 'react-calendar';
 
-import onClick from 'react-calendar';
-import state from 'react-calendar';
-import activeStartDate from 'react-calendar';
-import MonthView from 'react-calendar';
-import isCalendarType from 'react-calendar';
 
 const App = () => {
 	const [sumInput,setSumInput] = useState(0);
