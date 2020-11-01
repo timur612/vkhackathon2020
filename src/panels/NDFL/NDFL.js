@@ -183,7 +183,11 @@ const NDFL = props =>{
             </View>
             {/* Ставка view для selectMimicry */}
             <Group>
-			
+			<h1 style={styles.h1}>Последний день уплаты налога</h1>
+			<Group>
+				<h2 styles={styles.h1}>Декабрь 2020 г.</h2>
+				<img src="././img/Ячейки.svg"></img>
+			</Group>
 		</Group>
         </Root>
         </Panel>
