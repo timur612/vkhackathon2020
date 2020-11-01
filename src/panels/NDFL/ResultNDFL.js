@@ -7,7 +7,7 @@ import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
-import cal from '../../img/Ячейки.png';
+import cal from '../../img/Ячейки.svg';
 
 import {Title } from '@vkontakte/vkui';
 const styles = {
