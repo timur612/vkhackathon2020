@@ -2,13 +2,12 @@
   "name": "nalogcalc",
   "version": "1.0.0",
   "description": "",
-  "homepage": "https://timur612.github.io/vkhackathon2020/",
   "main": "index.js",
   "scripts": {
     "start": "cross-env PORT=10888 HTTPS=true react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
-    "deploy": "vk-miniapps-deploy"
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
