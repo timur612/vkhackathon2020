@@ -32,17 +32,17 @@ const ResultTrans = (props) =>{
             <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.sumInput}</Title >
 
             <Title  weight="regular">Сумма налога</Title >
-            <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.sumInput*props.value.stavkaInput*(props.value.month/12)} руб.</Title >
+            <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.sumInput*props.value.stavkaInput*(props.value.month/12)} ₽</Title >
         </Div>
 
         <Div style={{marginTop:'.5rem'}}>
-            <Title level="3" align='center' weight="bold" style={{ marginBottom: 5 }}>Изменения ставок на Транспортные налоги</Title>
+            <Title level="3" align='center' weight="bold" style={{ marginBottom: 5 }}>Ставки транспортного налога</Title>
 
-            <Title level="3" weight="regular" style={{ marginBottom: 16 }}>Республика Саха(Якутия) <strong style={{marginLeft:'3rem'}}>120 <p style={{color:"#4986CC",display:"inline",marginLeft:'.5rem'}}>+0.66</p></strong></Title>
+            <Title level="3" weight="regular" style={{ marginBottom: 16 }}>Республика Саха(Якутия) <strong style={{marginLeft:'3rem'}}>120</strong></Title>
             <Separator style={{ margin: '12px 0' }} />
-            <Title level="3" weight="regular" style={{ marginBottom: 16 }}>Республика Татарстан <strong style={{marginLeft:'4.4rem'}}>110 <p style={{color:"#4986CC",display:"inline",marginLeft:'.5rem'}}>+0.56</p></strong></Title>
+            <Title level="3" weight="regular" style={{ marginBottom: 16 }}>Республика Татарстан <strong style={{marginLeft:'4.4rem'}}>110 </strong></Title>
             <Separator style={{ margin: '12px 0' }} />
-            <Title level="3" weight="regular" style={{ marginBottom: 16 }}>Москва <strong style={{marginLeft:'11.3rem'}}>130 <p style={{color:"#E64646",display:"inline",marginLeft:'.5rem'}}>-0.32</p></strong></Title>
+            <Title level="3" weight="regular" style={{ marginBottom: 16 }}>Москва <strong style={{marginLeft:'11.3rem'}}>130 </strong></Title>
         </Div>
     </Panel>
     );

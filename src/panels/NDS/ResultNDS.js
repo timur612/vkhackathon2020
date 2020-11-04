@@ -34,7 +34,7 @@ const ResultNDS = (props) =>{
         </PanelHeader>
         <Div>
             <Title  weight="regular">НДС из</Title >
-            <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.sumInput} руб.</Title >
+            <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.sumInput} ₽</Title >
 
             <Title  weight="regular">Ставка</Title >
             <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.stavkaInput}%</Title >

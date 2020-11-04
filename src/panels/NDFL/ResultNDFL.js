@@ -55,12 +55,12 @@ const ResultNDFL = (props) =>{
             <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.stavkaInput}%</Title >
 
             <Title  weight="regular">Сумма НДФЛ</Title >
-            <Title  weight="medium" style={{ marginBottom: 16 }}>{ndflCount(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
+            <Title  weight="medium" style={{ marginBottom: 16 }}>{ndflCount(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} ₽</Title >
 
             <Title  weight="regular">Сумма оклада</Title >
             {props.value.typeNdfl==='Посчитать налог'?
-                <Title  weight="medium" style={{ marginBottom: 16 }}>{ndflWithout(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
-            : <Title  weight="medium" style={{ marginBottom: 16 }}>{ndflOklad(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >}
+                <Title  weight="medium" style={{ marginBottom: 16 }}>{ndflWithout(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} ₽</Title >
+            : <Title  weight="medium" style={{ marginBottom: 16 }}>{ndflOklad(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} ₽</Title >}
         </Div>
         
         <Div>
