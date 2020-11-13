@@ -13,7 +13,12 @@ import Trans from './panels/Trans_Tax/Trans';
 import ResultNDS from './panels/NDS/ResultNDS';
 import ResultNDFL from './panels/NDFL/ResultNDFL';
 import ResultTrans from './panels/Trans_Tax/ResultTrans';
+import Main from './panels/Home/Main';
+import Profile from './panels/Profile/Profile';
 
+import TabBar from './panels/Tab_bar';
+
+import {FixedLayout,Panel} from '@vkontakte/vkui';
 
 const App = () => {
 	const [sumInput,setSumInput] = useState(0);
@@ -65,8 +70,8 @@ const App = () => {
 	const go = e => {
 		setActivePanel(e.currentTarget.dataset.to);
 	};
-
 	return (
+		<Panel>
 			<View activePanel={activePanel} popout={popout}>
 				<Home id='home' fetchedUser={fetchedUser} go={go}/>
 				<NDS id='nds' go={go} showValue={showNds}/>
@@ -76,7 +81,12 @@ const App = () => {
 				<ResultNDS id='resultNds' go={go} value={{sumInput,stavkaInput}}/>
 				<ResultNDFL id='resultNdfl' go={go} value={{sumInput,stavkaInput,typeNdfl}}></ResultNDFL>
 				<ResultTrans id='resultTrans' go={go} value={{sumInput,stavkaInput,month,region}}/>
+				<Main id="main" go={go}></Main>
+				<Profile id="profile" fetchedUser={fetchedUser} go={go}></Profile>
 			</View>	
+			<FixedLayout vertical="bottom"><TabBar id="tabbar" go={go}></TabBar></FixedLayout>
+		</Panel>
+			
 	);
 }
 
