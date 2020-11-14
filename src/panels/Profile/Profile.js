@@ -1,7 +1,7 @@
 import React from 'react';
 import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
-import {Link, Separator,Title,Text, Panel,SimpleCell,Avatar} from '@vkontakte/vkui';
+import {PanelHeader, Separator,Title,Text, Panel,SimpleCell,Avatar} from '@vkontakte/vkui';
 
 
 const styles = {
@@ -20,18 +20,19 @@ const styles = {
 	}
 }
 const Main = (props) => {
-    console.log(props)
     return(
         <Panel id={props.id}>
+            <PanelHeader>Профиль</PanelHeader>
             <Div>
                 {props.fetchedUser &&
                 <SimpleCell
                     before={props.fetchedUser.photo_200 ? <Avatar src={props.fetchedUser.photo_200}/> : null}
-                    description={props.fetchedUser.city && props.fetchedUser.city.title ? props.fetchedUser.city.title : ''}
+                    description={props.fetchedUser.city && props.fetchedUser.city.title ? props.fetchedUser.city.title : 'Города нет'}
                 >
-                    {`${props.fetchedUser.first_name} ${props.fetchedUser.last_name}`}
+                    {`${props.fetchedUser.first_name} ${props.fetchedUser.last_name}`} 
                 </SimpleCell>}
             </Div>
+            <Separator></Separator>
         </Panel>
     );
 }

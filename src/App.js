@@ -84,7 +84,10 @@ const App = () => {
 				<Main id="main" go={go}></Main>
 				<Profile id="profile" fetchedUser={fetchedUser} go={go}></Profile>
 			</View>	
-			<FixedLayout vertical="bottom"><TabBar id="tabbar" go={go}></TabBar></FixedLayout>
+			{activePanel==='home' || activePanel==='main' || activePanel==='profile' 
+								?<FixedLayout vertical="bottom"><TabBar id={activePanel} go={go}></TabBar></FixedLayout>
+								: ''}
+			
 		</Panel>
 			
 	);
