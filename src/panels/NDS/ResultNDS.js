@@ -15,11 +15,12 @@ const osName = platform();
 
 const styles = {
     checkStyle:{
-        position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'
+        position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,justifyContent: 'center',
+        alignItems: 'center',
+        
     },
-    checkStyleImg:{
-        position: 'absolute',
-        alignSelf: 'center',
+    checkStyleImg:{        
+        
     }
 }
 
@@ -42,25 +43,26 @@ const ResultNDS = (props) =>{
             >
                 Результат
         </PanelHeader>
-        <View style={{}}>
+        <Div style={{float:'center'}}>
             <img style={styles.checkStyleImg} src={resultBill}></img> 
             
-            <View style={styles.checkStyle}>
-                <Div style={{}}>
-                    <Title  weight="regular">НДС из</Title >
+           
+                <Div style={styles.checkStyle}>
+
+                    <Title  weight="regular" style={{ color:"#6D7885"}}>НДС из</Title >
                     <Title  weight="medium" style={{ marginBottom: 16, }}>{props.value.sumInput} ₽</Title >
 
-                    <Title  weight="regular">Ставка</Title >
+                    <Title  weight="regular" style={{ color:"#6D7885"}}>Ставка</Title >
                     <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.stavkaInput}%</Title >
 
-                    <Title  weight="regular" >Сумма без НДС</Title >
+                    <Title  weight="regular" style={{ color:"#6D7885"}}>Сумма без НДС</Title >
                     <Title  weight="medium" style={{ marginBottom: 16 }}>{ndsWithout(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
 
-                    <Title  weight="regular" style={{fontSize: "20px"}}>Сумма НДС</Title >
+                    <Title  weight="regular" style={{fontSize: "18px", color:"#6D7885"}}>Сумма НДС</Title >
                     <Title  weight="medium" style={{ marginBottom: 16,fontSize: "20px" }}>{ndsCount(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
                 </Div>
-            </View>
-        </View>
+            
+        </Div>
     </Panel>
     );
     
