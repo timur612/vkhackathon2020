@@ -10,7 +10,7 @@ import Div from '@vkontakte/vkui/dist/components/Div/Div';
 
 
 import {Title } from '@vkontakte/vkui';
-
+import resultBill from '../../img/result.svg';
 const osName = platform();
 
 const ResultNDS = (props) =>{
@@ -32,7 +32,9 @@ const ResultNDS = (props) =>{
             >
                 Результат
         </PanelHeader>
-        <Div>
+        <Div style={{backgroundImage:`url(${resultBill})`,backgroundPosition: 'center',backgroundSize: 'cover',backgroundRepeat: 'no-repeat',padding:'2rem'}}>
+            {/* <img src={resultBill}></img> */}
+            
             <Title  weight="regular">НДС из</Title >
             <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.sumInput} ₽</Title >
 
@@ -44,6 +46,9 @@ const ResultNDS = (props) =>{
 
             <Title  weight="regular">Сумма без НДС</Title >
             <Title  weight="medium" style={{ marginBottom: 16 }}>{ndsWithout(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
+            {/* <img src={resultBill} style={{position:'absolute',top:0,left:1}}>
+                
+            </img> */}
         </Div>
     </Panel>
     );
