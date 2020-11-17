@@ -9,9 +9,19 @@ import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 
 
-import {Title } from '@vkontakte/vkui';
+import {Title,View} from '@vkontakte/vkui';
 import resultBill from '../../img/result.svg';
 const osName = platform();
+
+const styles = {
+    checkStyle:{
+        position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'
+    },
+    checkStyleImg:{
+        position: 'absolute',
+        alignSelf: 'center',
+    }
+}
 
 const ResultNDS = (props) =>{
     function ndsCount(sum,stavka){
@@ -32,24 +42,25 @@ const ResultNDS = (props) =>{
             >
                 Результат
         </PanelHeader>
-        <Div style={{backgroundImage:`url(${resultBill})`,backgroundPosition: 'center',backgroundSize: 'cover',backgroundRepeat: 'no-repeat',padding:'2rem'}}>
-            {/* <img src={resultBill}></img> */}
+        <View style={{}}>
+            <img style={styles.checkStyleImg} src={resultBill}></img> 
             
-            <Title  weight="regular">НДС из</Title >
-            <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.sumInput} ₽</Title >
+            <View style={styles.checkStyle}>
+                <Div style={{}}>
+                    <Title  weight="regular">НДС из</Title >
+                    <Title  weight="medium" style={{ marginBottom: 16, }}>{props.value.sumInput} ₽</Title >
 
-            <Title  weight="regular">Ставка</Title >
-            <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.stavkaInput}%</Title >
+                    <Title  weight="regular">Ставка</Title >
+                    <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.stavkaInput}%</Title >
 
-            <Title  weight="regular">Сумма НДС</Title >
-            <Title  weight="medium" style={{ marginBottom: 16 }}>{ndsCount(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
+                    <Title  weight="regular" >Сумма без НДС</Title >
+                    <Title  weight="medium" style={{ marginBottom: 16 }}>{ndsWithout(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
 
-            <Title  weight="regular">Сумма без НДС</Title >
-            <Title  weight="medium" style={{ marginBottom: 16 }}>{ndsWithout(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
-            {/* <img src={resultBill} style={{position:'absolute',top:0,left:1}}>
-                
-            </img> */}
-        </Div>
+                    <Title  weight="regular" style={{fontSize: "20px"}}>Сумма НДС</Title >
+                    <Title  weight="medium" style={{ marginBottom: 16,fontSize: "20px" }}>{ndsCount(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
+                </Div>
+            </View>
+        </View>
     </Panel>
     );
     
