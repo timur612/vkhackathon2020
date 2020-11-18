@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import {Link, Separator,Title,Text, Panel} from '@vkontakte/vkui';
@@ -20,6 +20,20 @@ const styles = {
 	}
 }
 const Main = (props) => {
+    let headers = {
+        'Content-Type': 'application/json',
+    }
+    const fetchParams = { method: 'GET'};
+    useEffect(()=>{
+        fetch("https://api.vk.com/method/wall.get")
+            .then(res=>res.json())
+            .then((result)=>{
+                console.log(result);
+            },(error)=>console.log(error))
+    },[])
+    
+
+
     return(
         <Panel id={props.id}>
             <Group>
