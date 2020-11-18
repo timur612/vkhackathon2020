@@ -3,6 +3,7 @@ import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import {Link, Separator,Title,Text, Panel} from '@vkontakte/vkui';
 import axios from 'axios'
+import json from 'json-schema'
 
 const styles = {
 	h1: {
@@ -22,10 +23,12 @@ const styles = {
 const Main = (props) => {
     let headers = {
         'Content-Type': 'application/json',
-    }
+    };
 
     console.log(props.fetchedPost)
     // props.fetchedPost - объект с постами
+    const post = JSON.parse(props.fetchedPost);
+    console.log(post.text);
 
     return(
         <Panel id={props.id}>
