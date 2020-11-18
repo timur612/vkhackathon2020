@@ -49,6 +49,7 @@ const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
 	
 	const [fetchedUser, setUser] = useState(null);
+	const [fetchedPost, setPost] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 
 	useEffect(() => {
@@ -64,7 +65,13 @@ const App = () => {
 			setUser(user);
 			setPopout(null);
 		}
+		async function fetchDataGroup(){
+			const id_user = await bridge.send("VKWebAppGetAuthToken", {"app_id": 7645272, "scope": "friends,status"});
+			const post = await bridge.send("VKWebAppCallAPIMethod", {"method": "wall.get", "request_id": "32test", "params": {"owner_id": "-200122131", "v":"5.126", "access_token":`${id_user.access_token}`}});
+			setPost(post)
+		}
 		fetchData();
+		fetchDataGroup();
 	}, []);
 
 	const go = e => {
@@ -81,7 +88,7 @@ const App = () => {
 				<ResultNDS id='resultNds' go={go} value={{sumInput,stavkaInput}}/>
 				<ResultNDFL id='resultNdfl' go={go} value={{sumInput,stavkaInput,typeNdfl}}></ResultNDFL>
 				<ResultTrans id='resultTrans' go={go} value={{sumInput,stavkaInput,month,region}}/>
-				<Main id="main" go={go}></Main>
+				<Main fetchedPost={fetchedPost} id="main" go={go}></Main>
 				<Profile id="profile" fetchedUser={fetchedUser} go={go}></Profile>
 			</View>	
 			{activePanel==='home' || activePanel==='main' || activePanel==='profile' 

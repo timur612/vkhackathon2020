@@ -2,7 +2,7 @@ import React,{useEffect} from 'react';
 import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import {Link, Separator,Title,Text, Panel} from '@vkontakte/vkui';
-
+import axios from 'axios'
 
 const styles = {
 	h1: {
@@ -23,16 +23,27 @@ const Main = (props) => {
     let headers = {
         'Content-Type': 'application/json',
     }
-    const fetchParams = { method: 'GET'};
-    useEffect(()=>{
-        fetch("https://api.vk.com/method/wall.get")
-            .then(res=>res.json())
-            .then((result)=>{
-                console.log(result);
-            },(error)=>console.log(error))
-    },[])
-    
 
+    console.log(props.fetchedPost)
+    //https://api.vk.com/method/wall.get?owner_id=-200122131&count=1&filter=owner&access_token=82ea6bde12ad58701bfeb7001df9a18107b3768fddd76de66d63effb48386427e797cb920ef3714958948&v=5.126
+    // useEffect(()=>{
+    //     fetch('https://api.vk.com/method/users.get?user_id=210700286&v=5.126')
+    //         .then(res=>res.json())
+    //         .then((result)=>{
+    //             console.log(result);
+    //         },(error)=>console.log(error))
+    // },[])
+
+    // useEffect(()=>{
+        
+    //     axios.get(`https://api.vk.com/method/users.get?user_id=210700286&v=5.126`)
+    //         .then(res => {  
+    //             console.log(res)
+    //         })
+        
+    // },[])
+    
+    
 
     return(
         <Panel id={props.id}>
