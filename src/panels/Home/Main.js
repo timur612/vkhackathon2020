@@ -51,13 +51,13 @@ const Main = (props) => {
                         if(post.text.includes("#новости") && activeTab==='news'){
                             return (
                                 <Link href={post.attachments[0].link.url}>
-                                <Div style={{textAlign:'center'}}>
-                                    <div><img style={{borderRadius:'1rem 1rem 0rem 0rem',width:'21.5rem'}} src={post.attachments[0].link.photo.sizes[8].url}></img></div>
-                                    
-                                    <div style={{boxShadow: '0 0 10px rgba(0,0,0,0.5)',padding: '0.6rem',textAlign:'center',borderRadius:'0rem 0rem 1rem 1rem',marginTop:'-0.2rem',width:'20.3rem'}}>
-                                        <Title level="3" weight="semibold" >{post.text.replace('↵',' ')}</Title>    
-                                    </div>
-                                </Div>
+                                    <Div style={{textAlign:'center'}}>
+                                        <div><img style={{borderRadius:'1rem 1rem 0rem 0rem',width:'21.5rem'}} src={post.attachments[0].link.photo.sizes[8].url}></img></div>
+                                        
+                                        <div style={{color:'black',boxShadow: '0 0 10px rgba(0,0,0,0.5)',padding: '0.6rem',textAlign:'center',borderRadius:'0rem 0rem 1rem 1rem',marginTop:'-0.2rem',width:'20.3rem'}}>
+                                            <Title level="3" weight="semibold" >{post.text.replace('↵',' ')}</Title>    
+                                        </div>
+                                    </Div>
                                 </Link>
                             )
                         }else if(post.text.includes("#налоговыеизменения") && activeTab==='changes'){
