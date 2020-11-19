@@ -18,7 +18,7 @@ const styles = {
 
 const TabBar = (props) => {
     return(
-        <View>
+        <View style={{backgroundColor:'#F9F9F9'}}>
             <Div style={{display:'flex'}}>
                 {props.id==='main'
                                 ? <img onClick={props.go} data-to="main" src={IconHomeActive} style={styles.iconBar}></img>
