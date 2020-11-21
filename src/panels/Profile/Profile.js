@@ -2,6 +2,8 @@ import React from 'react';
 import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import {PanelHeader, Separator,Title,Text, Panel,SimpleCell,Avatar} from '@vkontakte/vkui';
+import bridge from '@vkontakte/vk-bridge';
+import input from '@vkontakte/vkui'
 
 
 const styles = {
@@ -33,6 +35,13 @@ const Main = (props) => {
                 </SimpleCell>}
             </Div>
             <Separator></Separator>
+            <Div>
+                <Group>
+                <Cell asideContent={<Switch />} >{bridge.send("VKWebAppInit")}
+                <img src="././img/notification.png"></img> Уведомление 
+                </Cell>
+                </Group>
+            </Div>
         </Panel>
     );
 }
