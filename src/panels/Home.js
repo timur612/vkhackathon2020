@@ -14,9 +14,9 @@ import Component from 'react';
 import {Link, Separator,Title,Text, FixedLayout} from '@vkontakte/vkui';
 import Collapsible from 'react-collapsible';
 import Calendar from 'react-calendar';
-import tax1 from '../img/tax1.png';
-import tax2 from '../img/tax2.png';
-import tax3 from '../img/tax3.png';
+import tax1 from '../img/tax1.svg';
+import tax2 from '../img/tax2.svg';
+import tax3 from '../img/tax3.svg';
 
 const styles = {
 	h1: {
