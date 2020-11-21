@@ -27,6 +27,8 @@ const App = () => {
 	const [month,setMonth] = useState(1);
 	const [region,setRegion] = useState('');
 
+	const [turnOn,setTurnOn] = React.useState(false);
+
 	function showNds(arg){
 		setSumInput(arg.sumInput);
 		setStavkaInput(arg.stavkaInput);
@@ -70,6 +72,7 @@ const App = () => {
 			const post = await bridge.send("VKWebAppCallAPIMethod", {"method": "wall.get", "request_id": "32test", "params": {"owner_id": "-200122131", "v":"5.126", "access_token":`${id_user.access_token}`}});
 			setPost(post)
 		}
+		
 		fetchData();
 		fetchDataGroup();
 	}, []);
@@ -89,7 +92,7 @@ const App = () => {
 				<ResultNDFL id='resultNdfl' go={go} value={{sumInput,stavkaInput,typeNdfl}}></ResultNDFL>
 				<ResultTrans id='resultTrans' go={go} value={{sumInput,stavkaInput,month,region}}/>
 				<Main fetchedPost={fetchedPost} id="main" go={go}></Main>
-				<Profile id="profile" fetchedUser={fetchedUser} go={go}></Profile>
+				<Profile turnOn={turnOn} id="profile" fetchedUser={fetchedUser} go={go}></Profile>
 			</View>	
 			{activePanel==='home' || activePanel==='main' || activePanel==='profile' 
 								?<FixedLayout vertical="bottom"><TabBar id={activePanel} go={go}></TabBar></FixedLayout>

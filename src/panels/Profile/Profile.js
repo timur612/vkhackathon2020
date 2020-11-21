@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
-import {PanelHeader, Separator,Title,Text, Panel,SimpleCell,Avatar} from '@vkontakte/vkui';
+import {PanelHeader, Separator,Title,Text, Panel,SimpleCell,Avatar,Switch,Cell} from '@vkontakte/vkui';
 import bridge from '@vkontakte/vk-bridge';
 import input from '@vkontakte/vkui'
 
+import NotificationIcon from '../../img/notification.svg'
 
 const styles = {
 	h1: {
@@ -22,6 +23,26 @@ const styles = {
 	}
 }
 const Main = (props) => {
+    const [turnOn,setTurnOn] = React.useState(false)
+
+
+    
+    useEffect(()=>{
+        async function turnOnNotif(){
+           await bridge.send("VKWebAppAllowNotifications");
+        }    
+        async function turnOffNotif(){
+            await bridge.send("VKWebAppDenyNotifications");
+        }
+
+        if(props.turnOn){
+            turnOnNotif()
+        }else{
+            turnOffNotif()
+        }
+    })
+    
+    console.log(props.turnOn);
     return(
         <Panel id={props.id}>
             <PanelHeader>Профиль</PanelHeader>
@@ -37,8 +58,12 @@ const Main = (props) => {
             <Separator></Separator>
             <Div>
                 <Group>
-                <Cell asideContent={<Switch />} >{bridge.send("VKWebAppInit")}
-                <img src="././img/notification.png"></img> Уведомление 
+                <Cell asideContent={props.turnOn===false ? <Switch onClick={()=>props.setTurnOn(!props.turnOn)} /> : <Switch defaultChecked onClick={()=>props.setTurnOn(!props.turnOn)}  />} >
+                    <div style={{display:'flex'}}>
+                        <img  src={NotificationIcon}></img> 
+                        <Text style={{marginTop:'0.3rem',marginLeft:'0.5rem',fontSize:'1rem'}}>Уведомление</Text> 
+                    </div>
+                    
                 </Cell>
                 </Group>
             </Div>
