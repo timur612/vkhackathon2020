@@ -18,6 +18,7 @@ import tax1 from '../img/tax1.svg';
 import tax2 from '../img/tax2.svg';
 import tax3 from '../img/tax3.svg';
 
+
 const styles = {
 	h1: {
 		textAlign:"center",
