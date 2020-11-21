@@ -14,6 +14,9 @@ import Component from 'react';
 import {Link, Separator,Title,Text, FixedLayout} from '@vkontakte/vkui';
 import Collapsible from 'react-collapsible';
 import Calendar from 'react-calendar';
+import tax1 from '../img/tax1.png';
+import tax2 from '../img/tax2.png';
+import tax3 from '../img/tax3.png';
 
 const styles = {
 	h1: {
@@ -36,6 +39,15 @@ const styles = {
 		right:"0",
 		top:"0",
 		transform:"rotate(0.5turn)"
+	},
+	predicon:{
+		position:"absolute",
+		marginLeft:"1rem",
+	},
+	predicontext:{
+		position:"relative",
+		marginLeft:"40px",
+		marginTop:"3	px",
 	}
 }
 
@@ -60,24 +72,27 @@ const Home = ({ id, go })=>{
 				<PanelHeader>Налоговый калькулятор</PanelHeader>
 				
 				<Group title="Посчитать НДС" style={{position:"relative"}}>
+				<img src={tax1} style={styles.predicon}></img>
 					<Cell>
-						<Title onClick={go} data-to="nds">НДС</Title>
+						<Title onClick={go} data-to="nds" style={styles.predicontext}>НДС</Title>
 					</Cell>
 					<Collapsible trigger={<Icon28ChevronDownOutline onClick={turnTriangle} style={ touched1===true ? styles.icon : styles.iconTurned}/>}>
 						<Div><p>Налог на добавочную стоимость (НДС) — это косвенный налог. Исчисление производится продавцом при реализации товаров (работ, услуг, имущественных прав) покупателю.</p></Div>		
 					</Collapsible>
 				</Group>
 				<Group title="Посчитать НДФЛ" style={{position:"relative"}}>
+				<img src={tax2} style={styles.predicon}></img>
 					<Cell>
-						<Title onClick={go} data-to="NDFL">НДФЛ</Title>
+						<Title onClick={go} data-to="NDFL" style={styles.predicontext}>НДФЛ</Title>
 					</Cell>
 					<Collapsible trigger={<Icon28ChevronDownOutline onClick={turnTriangle2} style={touched2===true ? styles.icon : styles.iconTurned}/>}>
 						<Div><p>Налог на доходы физических лиц (НДФЛ) — основной вид прямых налогов. Исчисляется в процентах от совокупного дохода физических лиц за вычетом документально подтверждённых расходов, в соответствии с действующим законодательством.</p></Div>		
 					</Collapsible>
 				</Group>
 				<Group title="Посчитать транспортный налог" style={{position:"relative"}}>
+				<img src={tax3} style={styles.predicon}></img>
 					<Cell >
-						<Title onClick={go} data-to="Trans">Транспортный налог</Title>
+						<Title onClick={go} data-to="Trans" style={styles.predicontext}>Транспортный налог</Title>
 					</Cell>
 					<Collapsible trigger={<Icon28ChevronDownOutline onClick={turnTriangle3} style={touched3===true ? styles.icon : styles.iconTurned}/>}>
 						<Div><p>Транспортный налог — налог, взимаемый с владельцев зарегистрированных транспортных средств.</p></Div>		
