@@ -72,7 +72,10 @@ const App = () => {
 			const post = await bridge.send("VKWebAppCallAPIMethod", {"method": "wall.get", "request_id": "32test", "params": {"owner_id": "-200122131", "v":"5.126", "access_token":`${id_user.access_token}`}});
 			setPost(post)
 		}
-		
+		async function checkNotif(){
+			const flag = await bridge.send("VKWebAppStorageSet", {"notif": turnOn});
+
+		}
 		fetchData();
 		fetchDataGroup();
 	}, []);
@@ -92,7 +95,7 @@ const App = () => {
 				<ResultNDFL id='resultNdfl' go={go} value={{sumInput,stavkaInput,typeNdfl}}></ResultNDFL>
 				<ResultTrans id='resultTrans' go={go} value={{sumInput,stavkaInput,month,region}}/>
 				<Main fetchedPost={fetchedPost} id="main" go={go}></Main>
-				<Profile turnOn={turnOn} id="profile" fetchedUser={fetchedUser} go={go}></Profile>
+				<Profile setTurnOn={setTurnOn} turnOn={turnOn} id="profile" fetchedUser={fetchedUser} go={go}></Profile>
 			</View>	
 			{activePanel==='home' || activePanel==='main' || activePanel==='profile' 
 								?<FixedLayout vertical="bottom"><TabBar id={activePanel} go={go}></TabBar></FixedLayout>
@@ -104,4 +107,3 @@ const App = () => {
 }
 
 export default App;
-

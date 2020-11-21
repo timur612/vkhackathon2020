@@ -23,10 +23,6 @@ const styles = {
 	}
 }
 const Main = (props) => {
-    const [turnOn,setTurnOn] = React.useState(false)
-
-
-    
     useEffect(()=>{
         async function turnOnNotif(){
            await bridge.send("VKWebAppAllowNotifications");
