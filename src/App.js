@@ -5,7 +5,8 @@ import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenS
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
-
+import NPO from './panels/NPO/NPO';
+import ResultNPO from './panels/NPO/ResultNPO';
 import NDS from './panels/NDS/NDS';
 import Immus from './panels/Immuns_Tax/Immus2';
 import NDFL from './panels/NDFL/NDFL';
@@ -45,6 +46,11 @@ const App = () => {
 		setStavkaInput(arg.stavka);
 		setMonth(arg.month);
 		setRegion(arg.region)
+	}
+	
+	function showNPO(arg){
+		setStavkaInput(arg.stavka);
+
 	}
 
 
@@ -90,6 +96,7 @@ const App = () => {
 				<NDS id='nds' go={go} showValue={showNds}/>
 				<Trans id='Trans'go={go} showValue={showTs}/>
 				<NDFL id='NDFL' go={go} showValue={showNdfl}/>
+				<NPO id='NPO' go={go} showValue={showNPO}/>
 				<Immus id='Immus' go={go}/>
 				<ResultNDS id='resultNds' go={go} value={{sumInput,stavkaInput}}/>
 				<ResultNDFL id='resultNdfl' go={go} value={{sumInput,stavkaInput,typeNdfl}}></ResultNDFL>

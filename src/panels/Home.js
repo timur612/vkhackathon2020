@@ -17,6 +17,7 @@ import Calendar from 'react-calendar';
 import tax1 from '../img/tax1.svg';
 import tax2 from '../img/tax2.svg';
 import tax3 from '../img/tax3.svg';
+import tax4 from '../img/tax4.svg';
 
 
 const styles = {
@@ -97,6 +98,16 @@ const Home = ({ id, go })=>{
 					</Cell>
 					<Collapsible trigger={<Icon28ChevronDownOutline onClick={turnTriangle3} style={touched3===true ? styles.icon : styles.iconTurned}/>}>
 						<Div><p>Транспортный налог — налог, взимаемый с владельцев зарегистрированных транспортных средств.</p></Div>		
+					</Collapsible>
+				</Group>
+				<Group title="Посчитать НПО" style={{position:"relative"}}>
+				<img src={tax2} style={styles.predicon}></img>
+					<Cell>
+						<Title onClick={go} data-to="NPO" style={styles.predicontext}>Налог на прибыль организаций</Title>
+					</Cell>
+					<Collapsible trigger={<Icon28ChevronDownOutline onClick={turnTriangle} style={ touched1===true ? styles.icon : styles.iconTurned}/>}>
+						<Div><p>Налог на прибыль организаций — это прямой налог, его величина прямо зависит от конечных финансовых результатов деятельности организации.
+Он начисляется на прибыль, которую получила организация, то есть на разницу между доходами и расходами.</p></Div>		
 					</Collapsible>
 				</Group>
 			</Panel>
