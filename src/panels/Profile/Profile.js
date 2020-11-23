@@ -4,7 +4,7 @@ import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import {PanelHeader, Separator,Title,Text, Panel,SimpleCell,Avatar,Switch,Cell} from '@vkontakte/vkui';
 import bridge from '@vkontakte/vk-bridge';
 import input from '@vkontakte/vkui'
-
+import Icon28UserOutline from '@vkontakte/icons/dist/28/user_outline';
 import NotificationIcon from '../../img/notification.svg'
 
 const styles = {
@@ -37,6 +37,16 @@ const Main = (props) => {
             turnOffNotif()
         }
     })
+const Profile = (props) =>{
+    useEffect(()=>{
+        async function faceFiz(){
+            await bridge.send("VKWebAppStorageGet", {"face": ["fiz"]});
+        }
+        async function faceLaw(){
+            await bridge.send("VKWebAppStorageGet", {"face":["Law"]});
+        }
+    })
+}
     
     console.log(props.turnOn);
     return(
@@ -61,6 +71,14 @@ const Main = (props) => {
                     </div>
                     
                 </Cell>
+                </Group>
+                <Group>
+                    <Cell>
+                    <div style={{display:'flex'}}>
+                        <img src={Icon28UserOutline}></img>
+                        <Text style={{marginTop:'0.3rem',marginLeft:'0.5rem',fontSize:'1rem'}}>Переключиться </Text>
+                    </div>
+                    </Cell>
                 </Group>
             </Div>
         </Panel>
