@@ -19,7 +19,7 @@ const styles = {
         top: 0,
         left: 0,
         bottom: 210,
-        right: 180,
+        right: 150,
         justifyContent:'center', alignItems: 'center',alignSelf:'center',
     },
 }

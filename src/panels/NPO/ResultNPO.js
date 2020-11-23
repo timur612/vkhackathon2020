@@ -59,7 +59,7 @@ const ResultNPO = (props) =>{
                         <Title  weight="medium" style={{ marginBottom: 16 }}>{npoWithout(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
 
                         <Title  weight="regular" style={{fontSize: "18px", color:"#6D7885"}}>Сумма НДС</Title >
-                        <Title  weight="medium" style={{ marginBottom: 16,fontSize: "20px" }}>{npoCount(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
+                        <Title  weight="medium" style={{ marginBottom: 16}}>{npoCount(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
                     </div>
                 </Div>
             
