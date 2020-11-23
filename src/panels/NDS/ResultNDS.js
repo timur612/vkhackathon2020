@@ -18,12 +18,12 @@ const osName = platform();
 const styles = {
     checkStyle:{
         position: 'absolute',
+        display: "flex",
         top: 0,
         left: 0,
-        bottom: 0,
-        right: 0,justifyContent:'center', alignItems: 'center',alignSelf:'center',
-        
-        
+        bottom: 210,
+        right: 180,
+        justifyContent:'center', alignItems: 'center',alignSelf:'center',
     },
 }
 
@@ -46,10 +46,10 @@ const ResultNDS = (props) =>{
             >
                 Результат
         </PanelHeader>
-        <div style={{padding:'0.5rem'}}>
+        <div style={{padding:'0.5rem',  display:'flex', justifyContent:'center'}}>
             <img src={resultBill}></img> 
                 <Div style={styles.checkStyle}>
-                    <div style={{marginTop:'5rem',paddingLeft:'1.5rem'}}>
+                    <div>
                         <Title  weight="regular" style={{ color:"#6D7885"}}>НДС из</Title >
                         <Title  weight="medium" style={{ marginBottom: 16, }}>{props.value.sumInput} ₽</Title >
 
@@ -59,7 +59,7 @@ const ResultNDS = (props) =>{
                         <Title  weight="regular" style={{ color:"#6D7885"}}>Сумма без НДС</Title >
                         <Title  weight="medium" style={{ marginBottom: 16 }}>{ndsWithout(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
 
-                        <Title  weight="regular" style={{fontSize: "18px", color:"#6D7885"}}>Сумма НДС</Title >
+                        <Title  weight="regular" style={{color:"#6D7885"}}>Сумма НДС</Title >
                         <Title  weight="medium" style={{ marginBottom: 16,fontSize: "20px" }}>{ndsCount(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
                     </div>
                 </Div>
