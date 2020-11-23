@@ -62,11 +62,6 @@ const ResultNDS = (props) =>{
                         <Title  weight="regular" style={{fontSize: "18px", color:"#6D7885"}}>Сумма НДС</Title >
                         <Title  weight="medium" style={{ marginBottom: 16,fontSize: "20px" }}>{ndsCount(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
                     </div>
-                    
-                    <Div>
-                        <Button style={{float:'right'}} mode="tertiary"><Icon28ShareOutline></Icon28ShareOutline></Button>
-                        <Button size="xl">Сохранить результат</Button>
-                    </Div>
                 </Div>
             
         </div>

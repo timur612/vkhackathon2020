@@ -9,8 +9,20 @@ import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 
 import {Title,Separator} from '@vkontakte/vkui';
-
+import resultBill from '../../img/result.svg';
 const osName = platform();
+
+const styles = {
+    checkStyle:{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,justifyContent:'center', alignItems: 'center',alignSelf:'center',
+        
+        
+    },
+}
 
 const ResultTrans = (props) =>{
 
@@ -24,7 +36,10 @@ const ResultTrans = (props) =>{
             >
                 Результат
         </PanelHeader>
-        <Div>
+        <div style={{padding:'0.5rem'}}>
+            <img src={resultBill}></img> 
+                <Div style={styles.checkStyle}>
+                    <div style={{marginTop:'5rem',paddingLeft:'1.5rem'}}>
             <Title  weight="regular">Регион</Title >
             <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.region}</Title >
 
@@ -33,17 +48,9 @@ const ResultTrans = (props) =>{
 
             <Title  weight="regular">Сумма налога</Title >
             <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.sumInput*props.value.stavkaInput*(props.value.month/12)} ₽</Title >
+            </div>
         </Div>
-
-        <Div style={{marginTop:'.5rem'}}>
-            <Title level="3" align='center' weight="bold" style={{ marginBottom: 5 }}>Ставки транспортного налога</Title>
-
-            <Title level="3" weight="regular" style={{ marginBottom: 16 }}>Республика Саха(Якутия) <strong style={{marginLeft:'3rem'}}>120</strong></Title>
-            <Separator style={{ margin: '12px 0' }} />
-            <Title level="3" weight="regular" style={{ marginBottom: 16 }}>Республика Татарстан <strong style={{marginLeft:'4.4rem'}}>110 </strong></Title>
-            <Separator style={{ margin: '12px 0' }} />
-            <Title level="3" weight="regular" style={{ marginBottom: 16 }}>Москва <strong style={{marginLeft:'11.3rem'}}>130 </strong></Title>
-        </Div>
+        </div>
     </Panel>
     );
     

@@ -8,7 +8,7 @@ import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import cal from '../../img/Ячейки.svg';
-
+import resultBill from '../../img/result.svg';
 import {Title } from '@vkontakte/vkui';
 const styles = {
     btn: {
@@ -19,9 +19,19 @@ const styles = {
         },
     a:{
             marginBottom: 10,
-        }
+        },
+        checkStyle:{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,justifyContent:'center', alignItems: 'center',alignSelf:'center',
+            
+            
+        },
 }
 const osName = platform();
+
 
 const ResultNDFL = (props) =>{
 
@@ -47,7 +57,10 @@ const ResultNDFL = (props) =>{
             >
                 Результат
         </PanelHeader>
-        <Div>
+        <div style={{padding:'0.5rem'}}>
+        <img src={resultBill}></img>
+        <Div style={styles.checkStyle}>
+        <div style={{marginTop:'5rem',paddingLeft:'1.5rem'}}>
             <Title  weight="regular">Сумма</Title >
             <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.sumInput} руб.</Title >
 
@@ -61,13 +74,9 @@ const ResultNDFL = (props) =>{
             {props.value.typeNdfl==='Посчитать налог'?
                 <Title  weight="medium" style={{ marginBottom: 16 }}>{ndflWithout(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} ₽</Title >
             : <Title  weight="medium" style={{ marginBottom: 16 }}>{ndflOklad(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} ₽</Title >}
+        </div>
         </Div>
-        
-        <Div>
-            <Title level="1" style={styles.h1}>Последний день уплаты налога</Title>
-            <Title level="2" align="center" weight="regular" style={{marginBottom:"1.5rem"}}>Декабрь 2020 г.</Title>
-            <img src={cal}></img>
-        </Div>
+        </div>
     </Panel>
     );
     
