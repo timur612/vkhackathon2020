@@ -52,6 +52,7 @@ const styles = {
 		marginTop:"3	px",
 	},
 	topios:{
+		marginLeft:"10px",
 		color:"black",
 	},
 }
