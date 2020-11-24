@@ -33,11 +33,12 @@ function useInputValue(defaultValue=''){
 }
 
 const NPO = props=> {
-    const sumInput = useInputValue('');
+    const sumInputRas = useInputValue('');
+    const sumInputDoh = useInputValue('');
     const stavkaInput = useInputValue('');
 
     //props.value = sumInput.value();
-    props.showValue({sumInput:sumInput.value(),stavkaInput:stavkaInput.value()})
+    props.showValue({sumInputRas:sumInputRas.value(),stavkaInput:stavkaInput.value(),sumInputDoh:sumInputDoh.value()})
     //console.log(ndsCount(parseInt(sumInput.value()),parseInt(stavkaInput.value())/100).sumNds);
     return (
         <Panel id={props.id}>
@@ -51,14 +52,14 @@ const NPO = props=> {
                 
                     <FormLayout>
                         <FormLayoutGroup top="Сумма расходов">
-                            <Input placeholder="Введите сумму" required type="number" {...sumInput.bind} onInput={()=>{if(sumInput.value()<0){sumInput.clear()}}}/>
+                            <Input placeholder="Введите сумму" required type="number" {...sumInputRas.bind} onInput={()=>{if(sumInputRas.value()<0){sumInputRas.clear()}}}/>
                         </FormLayoutGroup>
 
                         <FormLayoutGroup top="Ставка НДС(%)">
                             <Input placeholder="20%" required type="number" {...stavkaInput.bind}/>
                         </FormLayoutGroup>
                         <FormLayoutGroup top="Сумма дохода">
-                            <Input placeholder="Введите сумму" required type="number" {...sumInput.bind} onInput={()=>{if(sumInput.value()<0){sumInput.clear()}}}/>
+                            <Input placeholder="Введите сумму" required type="number" {...sumInputDoh.bind} onInput={()=>{if(sumInputDoh.value()<0){sumInputDoh.clear()}}}/>
                         </FormLayoutGroup>
                         
                         <FormLayoutGroup top="Ставка НДС(%)">
@@ -67,7 +68,7 @@ const NPO = props=> {
                     </FormLayout>
                 <Div style={styles.btn}>
                     
-                    {sumInput.value()!=='' && stavkaInput.value()!=='' ? 
+                    {sumInputDoh.value()!=='' && sumInputRas.value()!=='' &&  stavkaInput.value()!=='' ? 
                         <Button size="xl" level="2" onClick={props.go} data-to={"resultNPO"} > 
                         Рассчитать налог
                         </Button> : <Button disabled size="xl" level="2" onClick={props.go} data-to={"resultNPO"} > 

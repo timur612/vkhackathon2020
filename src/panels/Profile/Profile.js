@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
-import {PanelHeader, Separator,Title,Text, Panel,SimpleCell,Avatar,Switch,Cell} from '@vkontakte/vkui';
+import {PanelHeader, Separator,Button,Text, Panel,SimpleCell,Avatar,Switch,Cell} from '@vkontakte/vkui';
 import bridge from '@vkontakte/vk-bridge';
 import input from '@vkontakte/vkui'
 import Icon28UserOutline from '@vkontakte/icons/dist/28/user_outline';
@@ -22,7 +22,8 @@ const styles = {
 		top:"0"
 	}
 }
-const Main = (props) => {
+const Profile = (props) => {
+    const [clicked,setClicked] = React.useState(true)
     useEffect(()=>{
         async function turnOnNotif(){
            await bridge.send("VKWebAppAllowNotifications");
@@ -30,25 +31,20 @@ const Main = (props) => {
         async function turnOffNotif(){
             await bridge.send("VKWebAppDenyNotifications");
         }
-
         if(props.turnOn){
             turnOnNotif()
         }else{
             turnOffNotif()
         }
-    })
-const Profile = (props) =>{
-    useEffect(()=>{
+
         async function faceFiz(){
-            await bridge.send("VKWebAppStorageGet", {"face": ["fiz"]});
+            await bridge.send("VKWebAppStorageSet", {"key": "Face", "value": "fiz"});
         }
         async function faceLaw(){
-            await bridge.send("VKWebAppStorageGet", {"face":["Law"]});
-        }
+            await bridge.send("VKWebAppStorageSet", {"key": "Face", "value": "ur"});
+        }        
     })
-}
-    
-    console.log(props.turnOn);
+    console.log(props.userFace);
     return(
         <Panel id={props.id}>
             <PanelHeader>Профиль</PanelHeader>
@@ -76,7 +72,10 @@ const Profile = (props) =>{
                     <Cell>
                     <div style={{display:'flex'}}>
                         <img src={Icon28UserOutline}></img>
-                        <Text style={{marginTop:'0.3rem',marginLeft:'0.5rem',fontSize:'1rem'}}>Переключиться </Text>
+                        {props.userFace==='ur' ?
+                                                <Button onClick={()=>{bridge.send("VKWebAppStorageSet", {"key": "Face", "value": "fiz"});props.setUserFace('fiz')}} style={{marginTop:'0.3rem',marginLeft:'0.5rem',fontSize:'1rem'}}>Переключиться на физ. лицо</Button> 
+                                                : <Button onClick={()=>{bridge.send("VKWebAppStorageSet", {"key": "Face", "value": "ur"});props.setUserFace('ur');}} style={{marginTop:'0.3rem',marginLeft:'0.5rem',fontSize:'1rem'}}>Переключиться на юр. лицо</Button>}
+                        
                     </div>
                     </Cell>
                 </Group>
@@ -85,4 +84,4 @@ const Profile = (props) =>{
     );
 }
 
-export default Main;
+export default Profile;

@@ -24,11 +24,14 @@ import {FixedLayout,Panel} from '@vkontakte/vkui';
 const App = () => {
 	const [sumInput,setSumInput] = useState(0);
 	const [stavkaInput,setStavkaInput] = useState(0);
+	const [sumInput2,setSumInput2] = useState(0);
 	const [typeNdfl,setTypeNdfl] = useState('');
 	const [month,setMonth] = useState(1);
 	const [region,setRegion] = useState('');
 
 	const [turnOn,setTurnOn] = React.useState(false);
+
+	const [userFace,setUserFace] = React.useState('');
 
 	function showNds(arg){
 		setSumInput(arg.sumInput);
@@ -49,8 +52,9 @@ const App = () => {
 	}
 	
 	function showNPO(arg){
-		setStavkaInput(arg.stavka);
-
+		setStavkaInput(arg.stavkaInput);
+		setSumInput(arg.sumInputRas);
+		setSumInput2(arg.sumInputDoh)
 	}
 
 
@@ -78,31 +82,44 @@ const App = () => {
 			const post = await bridge.send("VKWebAppCallAPIMethod", {"method": "wall.get", "request_id": "32test", "params": {"owner_id": "-200122131", "v":"5.126", "access_token":`${id_user.access_token}`}});
 			setPost(post)
 		}
-		async function checkNotif(){
-			const flag = await bridge.send("VKWebAppStorageSet", {"notif": turnOn});
-
+		async function checkUser(){
+			const flag = await bridge.send("VKWebAppStorageGet", {"keys": ["Face"]});
+			// setUserFace(flag.keys[0])
+			if(flag.keys[0].value===""){
+				await bridge.send("VKWebAppStorageSet", {"key": "Face", "value": "fiz"});
+				setUserFace('fiz')
+			}else{
+				if(flag.keys[0].value==='ur'){
+					setUserFace('ur')
+				}else if(flag.keys[0].value==='fiz'){
+					setUserFace('fiz')
+				}
+			}
+			
 		}
 		fetchData();
 		fetchDataGroup();
+		checkUser();
 	}, []);
-
+	// console.log(userFace)
 	const go = e => {
 		setActivePanel(e.currentTarget.dataset.to);
 	};
 	return (
 		<Panel>
 			<View activePanel={activePanel} popout={popout}>
-				<Home id='home' fetchedUser={fetchedUser} go={go}/>
+				<Home userFace={userFace} id='home' fetchedUser={fetchedUser} go={go}/>
 				<NDS id='nds' go={go} showValue={showNds}/>
 				<Trans id='Trans'go={go} showValue={showTs}/>
 				<NDFL id='NDFL' go={go} showValue={showNdfl}/>
 				<NPO id='NPO' go={go} showValue={showNPO}/>
 				<Immus id='Immus' go={go}/>
 				<ResultNDS id='resultNds' go={go} value={{sumInput,stavkaInput}}/>
-				<ResultNDFL id='resultNdfl' go={go} value={{sumInput,stavkaInput,typeNdfl}}></ResultNDFL>
+				<ResultNPO id="resultNPO" go={go} value={{sumInput,stavkaInput,sumInput2}}></ResultNPO>
+				<ResultNDFL id='resultNdfl' go={go} value={{sumInput,stavkaInput}}></ResultNDFL>
 				<ResultTrans id='resultTrans' go={go} value={{sumInput,stavkaInput,month,region}}/>
 				<Main fetchedPost={fetchedPost} id="main" go={go}></Main>
-				<Profile setTurnOn={setTurnOn} turnOn={turnOn} id="profile" fetchedUser={fetchedUser} go={go}></Profile>
+				<Profile setUserFace={setUserFace} userFace={userFace} setTurnOn={setTurnOn} turnOn={turnOn} id="profile" fetchedUser={fetchedUser} go={go}></Profile>
 			</View>	
 			{activePanel==='home' || activePanel==='main' || activePanel==='profile' 
 								?<FixedLayout vertical="bottom"><TabBar id={activePanel} go={go}></TabBar></FixedLayout>
