@@ -170,7 +170,7 @@ const Trans = props =>{
                             {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
                         </PanelHeaderButton>}
                     >
-                        Расчёт Транспортного налога 
+                        Расчёт налога 
                     </PanelHeader>
                         <FormLayout>
                         <SelectMimicry
