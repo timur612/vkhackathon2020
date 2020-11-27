@@ -52,7 +52,7 @@ const styles = {
 		marginTop:"3	px",
 	},
 	topios:{
-		marginLeft:"10px",
+		marginRight:"10000px",
 		color:"black",
 	},
 }
@@ -76,7 +76,7 @@ const Home = ({ id, go })=>{
 
 		return(
 			<Panel id={id}>
-				<PanelHeader left={ab}></PanelHeader>
+				<PanelHeader>{ab}</PanelHeader>
 				
 				<Group title="Посчитать НДС" style={{position:"relative"}}>
 				<img src={tax1} style={styles.predicon}></img>

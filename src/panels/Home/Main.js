@@ -5,7 +5,7 @@ import {Link, Separator,Title,Text, Panel,PanelHeader,TabsItem,Tabs} from '@vkon
 import axios from 'axios'
 import json from 'json-schema'
 import Icon24Link from '@vkontakte/icons/dist/24/link';
-
+import Icon24ChevronRight from '@vkontakte/icons/dist/24/chevron_right';
 const styles = {
 	h1: {
 		textAlign:"center",
@@ -68,7 +68,7 @@ const Main = (props) => {
                                     <div style={{display:'flex'}}>
                                         
                                         <Title level="3" weight="semibold" >{post.text.replace('↵','<br>')}</Title>   
-                                        <Link href={post.attachments[0].link.url}><Icon24Link></Icon24Link></Link>
+                                        <Link href={post.attachments[0].link.url}><Icon24ChevronRight></Icon24ChevronRight></Link>
                                     </div>
                                 </Div>
                             )

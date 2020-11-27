@@ -11,16 +11,16 @@ import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Icon28ShareOutline from '@vkontakte/icons/dist/28/share_outline';
 
 import {Title,View,Button} from '@vkontakte/vkui';
-import resultBill from '../../img/result.svg';
+import resultBill from '../../img/result1.svg';
 const osName = platform();
 
 const styles = {
     checkStyle:{
         position: 'absolute',
         display: "flex",
-        top: 0,
+        top: 50,
         left: 0,
-        bottom: 35,
+        bottom: 0,
         right: 0,
         justifyContent:'center', alignItems: 'center',alignSelf:'center',
     },
@@ -49,42 +49,40 @@ const ResultNPO = (props) =>{
             <img src={resultBill}></img> 
                 <Div style={styles.checkStyle}>
                     <div>
-                        <Title weight="bold" style={{ color:"#6D7885"}}>Расходы</Title>
+                        <div style={{marginBottom: 20}}>
+                        <Title weight="bold" style={{ color:"#6D7885", marginBottom:20}}>Расходы</Title>
 
                         <Title  weight="regular" style={{ color:"#6D7885"}}>Сумма с НДС</Title >
-                        <Title  weight="medium" style={{ marginBottom: 16, }}>{props.value.sumInput} ₽</Title >
+                        <Title  weight="medium" style={{ marginBottom: 20, }}>{props.value.sumInput} ₽</Title >
                         
                         <Title  weight="regular" style={{ color:"#6D7885"}}>Сумма без НДС</Title >
-                        <Title  weight="medium" style={{ marginBottom: 16 }}>{npoWithout(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
+                        <Title  weight="medium" style={{ marginBottom: 25 }}>{npoWithout(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} ₽</Title >
                         
                         <Title  weight="regular" style={{fontSize: "18px", color:"#6D7885"}}>Сумма НДС</Title >
-                        <Title  weight="medium" style={{ marginBottom: 16}}>{npoCount(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} руб.</Title >
-
-                        <Title weight="bold" style={{ color:"#6D7885"}}>Доходы</Title>
+                        <Title  weight="medium" style={{ marginBottom: 25}}>{npoCount(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)} ₽</Title >
+                        </div><div style={{marginBottom: 20}}>
+                        <Title weight="bold" style={{ color:"#6D7885", marginBottom:20}}>Доходы</Title>
 
                         <Title  weight="regular" style={{ color:"#6D7885"}}>Сумма с НДС</Title >
-                        <Title  weight="medium" style={{ marginBottom: 16, }}>{props.value.sumInput2} ₽</Title >
+                        <Title  weight="medium" style={{ marginBottom: 25, }}>{props.value.sumInput2} ₽</Title >
                         
                         <Title  weight="regular" style={{ color:"#6D7885"}}>Сумма без НДС</Title >
-                        <Title  weight="medium" style={{ marginBottom: 16 }}>{npoWithout(parseInt(props.value.sumInput2),parseInt(props.value.stavkaInput)/100)} руб.</Title >
+                        <Title  weight="medium" style={{ marginBottom: 25 }}>{npoWithout(parseInt(props.value.sumInput2),parseInt(props.value.stavkaInput)/100)} ₽</Title >
                         
                         <Title  weight="regular" style={{fontSize: "18px", color:"#6D7885"}}>Сумма НДС</Title >
-                        <Title  weight="medium" style={{ marginBottom: 16}}>{npoCount(parseInt(props.value.sumInput2),parseInt(props.value.stavkaInput)/100)} руб.</Title >
-
-                        <Title weight="bold" style={{ color:"#6D7885"}}>Итого</Title>
+                        <Title  weight="medium" style={{ marginBottom: 25}}>{npoCount(parseInt(props.value.sumInput2),parseInt(props.value.stavkaInput)/100)} ₽</Title >
+                        </div><div style={{marginBottom: 20}}>
+                        <Title weight="bold" style={{ color:"#6D7885", marginBottom:20}}>Итого</Title>
 
                         <Title  weight="regular" style={{ color:"#6D7885"}}>НДС к уплате</Title >
-                        <Title  weight="medium" style={{ marginBottom: 16, }}>{(props.value.sumInput2-props.value.sumInput) *0.15} ₽</Title >
+                        <Title  weight="medium" style={{ marginBottom: 25, }}>{(props.value.sumInput2-props.value.sumInput) *0.15} ₽</Title >
                         
                         <Title  weight="regular" style={{ color:"#6D7885"}}>Налог на прибыль</Title >
-                        <Title  weight="medium" style={{ marginBottom: 16 }}>{((props.value.sumInput2-npoCount(parseInt(props.value.sumInput2),parseInt(props.value.stavkaInput)/100))-(props.value.sumInput-npoCount(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)))*0.2} руб.</Title >
+                        <Title  weight="medium" style={{ marginBottom: 25 }}>{((props.value.sumInput2-npoCount(parseInt(props.value.sumInput2),parseInt(props.value.stavkaInput)/100))-(props.value.sumInput-npoCount(parseInt(props.value.sumInput),parseInt(props.value.stavkaInput)/100)))*0.2} ₽</Title >
                         
                         <Title  weight="regular" style={{fontSize: "18px", color:"#6D7885"}}>Прибыль / убыток после налогов</Title >
-                        <Title  weight="medium" style={{ marginBottom: 16}}>{npoCount(parseInt(props.value.sumInput2),parseInt(props.value.stavkaInput)/100)} руб.</Title >
-                        
-
-
-                        
+                        <Title  weight="medium" style={{ marginBottom: 25}}>{npoCount(parseInt(props.value.sumInput2),parseInt(props.value.stavkaInput)/100)} ₽</Title >
+                        </div>
                     </div>
                 </Div>
             
