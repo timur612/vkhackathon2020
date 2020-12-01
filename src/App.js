@@ -109,7 +109,7 @@ const App = () => {
 		<Panel>
 			<View activePanel={activePanel} popout={popout}>
 				<Home userFace={userFace} id='home' fetchedUser={fetchedUser} go={go}/>
-				<NDS id='nds' go={go} showValue={showNds}/>
+				<NDS userFace={userFace} id='nds' go={go} showValue={showNds}/>
 				<Trans id='Trans'go={go} showValue={showTs}/>
 				<NDFL id='NDFL' go={go} showValue={showNdfl}/>
 				<NPO id='NPO' go={go} showValue={showNPO}/>

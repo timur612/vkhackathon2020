@@ -57,7 +57,7 @@ const styles = {
 	},
 }
 const osName = platform();
-const ab = <h1 style={styles.topios}>Налоговый калькулятор</h1>;
+const ab = <h4 style={styles.topios}>Налоговый калькулятор</h4>;
 const Home = ({ id, go, userFace})=>{
 		// TODO: переписать это говно
 		const [touched1,setTouched1] = React.useState(true)
@@ -107,16 +107,29 @@ const Home = ({ id, go, userFace})=>{
 					</Collapsible>
 				</Group>
 				</View>
-			 : userFace == 'ur' ?<Group title="Посчитать НПО" style={{position:"relative"}}>
-			<img src={tax2} style={styles.predicon}></img>
-				<Cell>
-					<Title onClick={go} data-to="NPO" style={styles.predicontext}>Налог на прибыль организаций</Title>
-				</Cell>
-				<Collapsible trigger={<Icon28ChevronDownOutline onClick={turnTriangle} style={ touched1===true ? styles.icon : styles.iconTurned}/>}>
-					<Div><p>Налог на прибыль организаций — это прямой налог, его величина прямо зависит от конечных финансовых результатов деятельности организации.
-Он начисляется на прибыль, которую получила организация, то есть на разницу между доходами и расходами.</p></Div>		
-				</Collapsible>
-			</Group> : null}				
+			 : userFace == 'ur' ?
+			 <View>
+				 <Group title="Посчитать НДС" style={{position:"relative"}}>
+				<img src={tax1} style={styles.predicon}></img>
+					<Cell>
+						<Title onClick={go} data-to="nds" style={styles.predicontext}>НДС</Title>
+					</Cell>
+					<Collapsible trigger={<Icon28ChevronDownOutline onClick={turnTriangle} style={ touched1===true ? styles.icon : styles.iconTurned}/>}>
+						<Div><p>Налог на добавочную стоимость (НДС) — это косвенный налог. Исчисление производится продавцом при реализации товаров (работ, услуг, имущественных прав) покупателю.</p></Div>		
+					</Collapsible>
+				</Group>
+				 <Group title="Посчитать НПО" style={{position:"relative"}}>
+				<img src={tax2} style={styles.predicon}></img>
+					<Cell>
+						<Title onClick={go} data-to="NPO" style={styles.predicontext}>Налог на прибыль организаций</Title>
+					</Cell>
+					<Collapsible trigger={<Icon28ChevronDownOutline onClick={turnTriangle} style={ touched1===true ? styles.icon : styles.iconTurned}/>}>
+						<Div><p>Налог на прибыль организаций — это прямой налог, его величина прямо зависит от конечных финансовых результатов деятельности организации.
+								Он начисляется на прибыль, которую получила организация, то есть на разницу между доходами и расходами.</p></Div>		
+					</Collapsible>
+				</Group>
+			 </View>
+			  : null}				
 				
 				
 			</Panel>

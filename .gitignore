@@ -17,4 +17,5 @@ package-lock.json
 .vscode
 .idea
 .now.json
-.bundle.zip
+
+bundle.zip

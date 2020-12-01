@@ -28,7 +28,8 @@ function useInputValue(defaultValue=''){
             onChange: event => setValue(event.target.value)
         },
         clear: ()=> setValue(0),
-        value: () => value
+        value: () => value,
+        setValueForFiz: () => setValue(20)
     }
 }
 
@@ -36,8 +37,13 @@ const NDS = props=> {
     const sumInput = useInputValue('');
     const stavkaInput = useInputValue('');
 
+    let stavkaValue = stavkaInput.value();
+    console.log(stavkaValue)
+    if(props.userFace=="fiz"){
+        stavkaValue = 20;
+    }
     //props.value = sumInput.value();
-    props.showValue({sumInput:sumInput.value(),stavkaInput:stavkaInput.value()})
+    props.showValue({sumInput:sumInput.value(),stavkaInput:stavkaValue})
     //console.log(ndsCount(parseInt(sumInput.value()),parseInt(stavkaInput.value())/100).sumNds);
     return (
         <Panel id={props.id}>
@@ -55,12 +61,13 @@ const NDS = props=> {
                         </FormLayoutGroup>
 
                         <FormLayoutGroup top="Ставка(%)">
-                            <Input placeholder="20%" required type="number" {...stavkaInput.bind}/>
+                            {props.userFace == 'fiz' ? <Input placeholder="20%" required type="number" disabled defaultValue={"20%"}/> : <Input placeholder="20%" required type="number" {...stavkaInput.bind}/>}
+                            
                         </FormLayoutGroup>
                     </FormLayout>
                 <Div style={styles.btn}>
                     
-                    {sumInput.value()!=='' && stavkaInput.value()!=='' ? 
+                    {sumInput.value()!=='' && stavkaValue!=='' ? 
                         <Button size="xl" level="2" onClick={props.go} data-to={"resultNds"} > 
                         Рассчитать налог
                         </Button> : <Button disabled size="xl" level="2" onClick={props.go} data-to={"resultNds"} > 
