@@ -5,7 +5,7 @@ import {Link, Separator,Title,Text, Panel,PanelHeader,TabsItem,Tabs} from '@vkon
 import axios from 'axios'
 import json from 'json-schema'
 import Icon24Link from '@vkontakte/icons/dist/24/link';
-import Icon24ChevronRight from '@vkontakte/icons/dist/24/chevron_right';
+import Icon24ChevronRight from '@vkontakte/icons/dist/28/chevron_right_outline';
 const styles = {
 	h1: {
 		textAlign:"center",

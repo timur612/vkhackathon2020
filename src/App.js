@@ -78,8 +78,8 @@ const App = () => {
 			setPopout(null);
 		}
 		async function fetchDataGroup(){
-			const id_user = await bridge.send("VKWebAppGetAuthToken", {"app_id": 7645272, "scope": "friends,status"});
-			const post = await bridge.send("VKWebAppCallAPIMethod", {"method": "wall.get", "request_id": "32test", "params": {"owner_id": "-200122131", "v":"5.126", "access_token":`${id_user.access_token}`}});
+			//const id_user = await bridge.send("VKWebAppGetAuthToken", {"app_id": 7645272, "scope": "friends,status"});
+			const post = await bridge.send("VKWebAppCallAPIMethod", {"method": "wall.get", "request_id": "32test", "params": {"owner_id": "-200122131", "v":"5.126", "access_token":`ebda87c9e0cf6e9d35c20bfd91c711e9045802787e33a88de1435257e7d55100fa694667f751017151a2d`}});
 			setPost(post)
 		}
 		async function checkUser(){
