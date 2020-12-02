@@ -13,6 +13,8 @@ import {FormLayout,FormLayoutGroup,Input} from '@vkontakte/vkui';
 import { Select,View,SelectMimicry,Root } from '@vkontakte/vkui';
 import {Group,List,Cell,Separator} from '@vkontakte/vkui';
 import Icon24Done from '@vkontakte/icons/dist/24/done'
+import axios from 'axios'
+
 
 const styles = {
     btn: {
@@ -45,118 +47,19 @@ const Trans = props =>{
 
     const [activeViewq,setActiveView] = React.useState('profile');
 
-    if(region==="Республика Саха(Якутия)"){
-        if(catTs==="Автомобили легковые"){
-            if(sumInput.value()<=100){
-                stavka=8
-            }else if(sumInput.value()>100 && sumInput.value()<=150){
-                stavka=13
-            }else if(sumInput.value()>150  && sumInput.value()<=200 ){
-                stavka=17
-            }else if(sumInput.value()>200  && sumInput.value()<=250 ){
-                stavka=30
-            }else if(sumInput.value()>250){
-                stavka=60
-            }
-        }else if(catTs==="Мотоциклы и мотороллеры"){
-            if(sumInput.value()<=20){
-                stavka=4
-            }else if(sumInput.value()>20 && sumInput.value()<=35){
-                stavka=8
-            }else if(sumInput.value()>35){
-                stavka=20
-            }
-        }
-        else if(catTs==="Грузовые автомобили"){
-            if(sumInput.value()<=100){
-                stavka=25
-            }else if(sumInput.value()>100 && sumInput.value()<=150){
-                stavka=40
-            }else if(sumInput.value()>150  && sumInput.value()<=200 ){
-                stavka=50
-            }else if(sumInput.value()>200  && sumInput.value()<=250 ){
-                stavka=65
-            }else if(sumInput.value()>250){
-                stavka=85
-            }
-        }
-    }else if(region==="Москва"){
-        if(catTs==="Автомобили легковые"){
-            if(sumInput.value()<=100){
-                stavka=12
-            }else if(sumInput.value()>100 && sumInput.value()<=125){
-                stavka=25
-            }else if(sumInput.value()>125  && sumInput.value()<=150 ){
-                stavka=35
-            }else if(sumInput.value()>150  && sumInput.value()<=175 ){
-                stavka=45
-            }else if(sumInput.value()>175 && sumInput.value()<=200 ){
-                stavka=50
-            }else if(sumInput.value()>200 && sumInput.value()<=225 ){
-                stavka=65
-            }else if(sumInput.value()>225 && sumInput.value()<=250 ){
-                stavka=75
-            }else if(sumInput.value()>250 ){
-                stavka=150
-            }
-        }else if(catTs==="Мотоциклы и мотороллеры"){
-            if(sumInput.value()<=20){
-                stavka=7
-            }else if(sumInput.value()>20 && sumInput.value()<=35){
-                stavka=15
-            }else if(sumInput.value()>35){
-                stavka=50
-            }
-        }
-        else if(catTs==="Грузовые автомобили"){
-            if(sumInput.value()<=100){
-                stavka=15
-            }else if(sumInput.value()>100 && sumInput.value()<=150){
-                stavka=26
-            }else if(sumInput.value()>150  && sumInput.value()<=200 ){
-                stavka=38
-            }else if(sumInput.value()>200  && sumInput.value()<=250 ){
-                stavka=55
-            }else if(sumInput.value()>250){
-                stavka=70
-            }
-        }
-    }else if(region==="Республика Татарстан"){
-        if(catTs==="Автомобили легковые"){
-            if(sumInput.value()<=100){
-                stavka=10
-            }else if(sumInput.value()>100 && sumInput.value()<=150){
-                stavka=35
-            }else if(sumInput.value()>150  && sumInput.value()<=200 ){
-                stavka=50
-            }else if(sumInput.value()>200  && sumInput.value()<=250 ){
-                stavka=75
-            }else if(sumInput.value()>250){
-                stavka=150
-            }
-        }else if(catTs==="Мотоциклы и мотороллеры"){
-            if(sumInput.value()<=20){
-                stavka=8
-            }else if(sumInput.value()>20 && sumInput.value()<=35){
-                stavka=12
-            }else if(sumInput.value()>35){
-                stavka=50
-            }
-        }
-        else if(catTs==="Грузовые автомобили"){
-            if(sumInput.value()<=100){
-                stavka=25
-            }else if(sumInput.value()>100 && sumInput.value()<=150){
-                stavka=40
-            }else if(sumInput.value()>150  && sumInput.value()<=200 ){
-                stavka=50
-            }else if(sumInput.value()>200  && sumInput.value()<=250 ){
-                stavka=65
-            }else if(sumInput.value()>250){
-                stavka=85
-            }
-        }
-    }
+    const [regions,setRegions] = React.useState([]);
+
+    React.useEffect(()=>{
+        const api_url = 'http://127.0.0.1:5000/api/tax/names';
+        
+        axios.get(api_url).then(res => {
+            const names = res.data;
+            setRegions(names[0])
+        }).catch(err=>console.log(err))
+    },[])
+    
+
+    console.log(regions)
 
     props.showValue({ls:sumInput.value(),stavka:stavka,month:months.value(),region:region})
 
@@ -210,24 +113,13 @@ const Trans = props =>{
                     </PanelHeader>
                     <Group>
                         <List>
-                        <Cell
-                            onClick={() => {setRegion('Республика Саха(Якутия)'); setActiveView('profile')}}
-                            asideContent={region === 'Республика Саха(Якутия)' ? <Icon24Done fill="var(--accent)" /> : null}
-                        >
-                            Республика Саха(Якутия)
-                        </Cell>
-                        <Cell
-                            onClick={() => {setRegion('Республика Татарстан'); setActiveView('profile')}}
-                            asideContent={region === 'Республика Татарстан' ? <Icon24Done fill="var(--accent)" /> : null}
-                        >
-                            Республика Татарстан
-                        </Cell>
-                        <Cell
-                            onClick={() => {setRegion('Москва'); setActiveView('profile')}}
-                            asideContent={region === 'Москва' ? <Icon24Done fill="var(--accent)" /> : null}
-                        >
-                            Москва
-                        </Cell>
+                        {regions.map((region_a,index)=>{
+                            return <Cell onClick={() => {setRegion(region_a); setActiveView('profile')}}
+                            asideContent={region === region_a ? <Icon24Done fill="var(--accent)" /> : null}>
+                                    {region_a}
+                                 </Cell>
+                        })}
+                        
                         </List>
                     </Group>
                 </Panel>
