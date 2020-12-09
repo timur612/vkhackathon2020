@@ -10,6 +10,8 @@ import Div from '@vkontakte/vkui/dist/components/Div/Div';
 
 import {Title,Separator} from '@vkontakte/vkui';
 import resultBill from '../../img/result.svg';
+import axios from 'axios';
+
 const osName = platform();
 
 const styles = {
@@ -25,8 +27,24 @@ const styles = {
 }
 
 const ResultTrans = (props) =>{
+    // 
 
-    console.log(props.value.stavkaInput)
+    const [result,setResult] = React.useState(0);
+
+    React.useEffect(()=>{
+        async function getNames(){
+            const api_url = `https://supertima.pythonanywhere.com/api/tax?region=${props.value.region}&transport=${props.value.transport}&ls=${props.value.sumInput}`;
+        
+            await axios.get(api_url).then(res => {
+                const lss = res.data;
+                setResult(lss[0])
+            }).catch(err=>console.log(err))
+        }
+
+        getNames()
+    },[])
+
+    //console.log(props.value.stavkaInput)
     return (
     <Panel id={props.id}>
         <PanelHeader
@@ -47,7 +65,7 @@ const ResultTrans = (props) =>{
             <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.sumInput}</Title >
 
             <Title  weight="regular">Сумма налога</Title >
-            <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.sumInput*props.value.stavkaInput*(props.value.month/12)} ₽</Title >
+            <Title  weight="medium" style={{ marginBottom: 16 }}>{props.value.sumInput*result*(props.value.month/12)} ₽</Title >
             </div>
         </Div>
         </div>

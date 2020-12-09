@@ -28,6 +28,7 @@ const App = () => {
 	const [typeNdfl,setTypeNdfl] = useState('');
 	const [month,setMonth] = useState(1);
 	const [region,setRegion] = useState('');
+	const [transport,setTransport] = useState('');
 
 	const [turnOn,setTurnOn] = React.useState(false);
 
@@ -48,7 +49,8 @@ const App = () => {
 		setSumInput(arg.ls);
 		setStavkaInput(arg.stavka);
 		setMonth(arg.month);
-		setRegion(arg.region)
+		setRegion(arg.region);
+		setTransport(arg.catTs)
 	}
 	
 	function showNPO(arg){
@@ -117,7 +119,7 @@ const App = () => {
 				<ResultNDS id='resultNds' go={go} value={{sumInput,stavkaInput}}/>
 				<ResultNPO id="resultNPO" go={go} value={{sumInput,stavkaInput,sumInput2}}></ResultNPO>
 				<ResultNDFL id='resultNdfl' go={go} value={{sumInput,stavkaInput}}></ResultNDFL>
-				<ResultTrans id='resultTrans' go={go} value={{sumInput,stavkaInput,month,region}}/>
+				<ResultTrans id='resultTrans' go={go} value={{sumInput,stavkaInput,month,region,transport}}/>
 				<Main fetchedPost={fetchedPost} id="main" go={go}></Main>
 				<Profile setUserFace={setUserFace} userFace={userFace} setTurnOn={setTurnOn} turnOn={turnOn} id="profile" fetchedUser={fetchedUser} go={go}></Profile>
 			</View>	

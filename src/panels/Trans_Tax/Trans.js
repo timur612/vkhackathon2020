@@ -39,7 +39,7 @@ const osName = platform();
 
 const Trans = props =>{
 
-    const sumInput = useInputValue('');
+    const sumInput = useInputValue();
     const [region,setRegion] = React.useState('');
     const [catTs,setCats] = React.useState('');
     const months = useInputValue('');
@@ -48,20 +48,28 @@ const Trans = props =>{
     const [activeViewq,setActiveView] = React.useState('profile');
 
     const [regions,setRegions] = React.useState([]);
+    const [transports,setTransports] = React.useState([]);
+    const [ls,setLs] = React.useState([]);
 
     React.useEffect(()=>{
-        const api_url = 'http://127.0.0.1:5000/api/tax/names';
+        async function getNames(){
+            const api_url = 'https://supertima.pythonanywhere.com/api/tax/names';
         
-        axios.get(api_url).then(res => {
-            const names = res.data;
-            setRegions(names[0])
-        }).catch(err=>console.log(err))
+            await axios.get(api_url).then(res => {
+                const names = res.data;
+                setRegions(names[0]);
+                setTransports(names[1]);
+                setLs(names[2]);
+            }).catch(err=>console.log(err))
+        }
+
+        getNames()
     },[])
     
 
     console.log(regions)
 
-    props.showValue({ls:sumInput.value(),stavka:stavka,month:months.value(),region:region})
+    props.showValue({ls:sumInput.value(),stavka:stavka,month:months.value(),region:region,catTs:catTs})
 
     return (
         <Panel id={props.id}>
@@ -87,6 +95,12 @@ const Trans = props =>{
                                 placeholder="Не выбрана"
                                 onClick={() => setActiveView('catTs')}
                         >{catTs}</SelectMimicry>
+
+                        {/* <SelectMimicry
+                                top="Мощность в Л.С."
+                                placeholder="Не выбрана"
+                                onClick={() => setActiveView('LS')}
+                        >{sumInput}</SelectMimicry> */}
 
                         <FormLayoutGroup top="Мощность в Л.С.">
                             <Input placeholder="Введите мощность в л.с." {...sumInput.bind} type="number" />
@@ -134,29 +148,37 @@ const Trans = props =>{
                     </PanelHeader>
                     <Group>
                         <List>
-                        <Cell
-                            onClick={() => {setCats('Автомобили легковые'); setActiveView('profile')}}
-                            asideContent={catTs === 'Автомобили легковые' ? <Icon24Done fill="var(--accent)" /> : null}
-                        >
-                            Автомобили легковые
-                        </Cell>
-                        <Cell
-                            onClick={() => {setCats('Мотоциклы и мотороллеры'); setActiveView('profile')}}
-                            asideContent={catTs === 'Мотоциклы и мотороллеры' ? <Icon24Done fill="var(--accent)" /> : null}
-                        >
-                            Мотоциклы и мотороллеры
-                        </Cell>
-                        <Cell
-                            onClick={() => {setCats('Грузовые автомобили'); setActiveView('profile')}}
-                            asideContent={catTs === 'Грузовые автомобили' ? <Icon24Done fill="var(--accent)" /> : null}
-                        >
-                            Грузовые автомобили
-                        </Cell>
+                        {transports.map((transport_a,index)=>{
+                            return <Cell onClick={() => {setCats(transport_a); setActiveView('profile')}}
+                            asideContent={catTs === transport_a ? <Icon24Done fill="var(--accent)" /> : null}>
+                                    {transport_a}
+                                 </Cell>
+                        })}
                         </List>
                     </Group>
                 </Panel>
             </View>
             {/* TS view для selectMimicry */} 
+
+            {/* LS view для selectMimicry*/}
+            {/* <View activePanel="regionPanel" id="LS">
+                <Panel id="regionPanel">
+                    <PanelHeader>
+                        Категория ТС
+                    </PanelHeader>
+                    <Group>
+                        <List>
+                        {ls.map((ls_a,index)=>{
+                            return <Cell onClick={() => {setSumInput(ls_a); setActiveView('profile')}}
+                            asideContent={sumInput === ls_a ? <Icon24Done fill="var(--accent)" /> : null}>
+                                    {ls_a}
+                                 </Cell>
+                        })}
+                        </List>
+                    </Group>
+                </Panel>
+            </View> */}
+            {/* LS view для selectMimicry */} 
 
             </Root>  
 	    </Panel>
