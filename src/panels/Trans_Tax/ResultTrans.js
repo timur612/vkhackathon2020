@@ -45,6 +45,7 @@ const ResultTrans = (props) =>{
     },[])
 
     //console.log(props.value.stavkaInput)
+    console.log(result)
     return (
     <Panel id={props.id}>
         <PanelHeader

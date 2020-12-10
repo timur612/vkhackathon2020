@@ -15,7 +15,7 @@ import {Group,List,Cell,Separator} from '@vkontakte/vkui';
 import Icon24Done from '@vkontakte/icons/dist/24/done'
 import axios from 'axios'
 
-
+import Loader from '../../Loader';
 const styles = {
     btn: {
         marginTop:'.5rem'
@@ -39,6 +39,8 @@ const osName = platform();
 
 const Trans = props =>{
 
+    const [loader,SetLoader] = React.useState(true);
+
     const sumInput = useInputValue();
     const [region,setRegion] = React.useState('');
     const [catTs,setCats] = React.useState('');
@@ -54,20 +56,28 @@ const Trans = props =>{
     React.useEffect(()=>{
         async function getNames(){
             const api_url = 'https://supertima.pythonanywhere.com/api/tax/names';
-        
+            
             await axios.get(api_url).then(res => {
                 const names = res.data;
-                setRegions(names[0]);
-                setTransports(names[1]);
-                setLs(names[2]);
+                setRegions(names);
             }).catch(err=>console.log(err))
         }
 
         getNames()
     },[])
     
+    function getTransport(region){
+        const api_url = `https://supertima.pythonanywhere.com/api/tax/transport?region=${region}`;
+        
+        axios.get(api_url).then(res => {
+            const names = res.data;
+            
+            setTransports(names);
+            SetLoader(false);
+        }).catch(err=>console.log(err))
+    }
 
-    console.log(regions)
+    console.log(transports)
 
     props.showValue({ls:sumInput.value(),stavka:stavka,month:months.value(),region:region,catTs:catTs})
 
@@ -75,6 +85,7 @@ const Trans = props =>{
         <Panel id={props.id}>
             <Root activeView={activeViewq}>
             <View activePanel="profilePanel" id="profile">
+                
                 <Panel id="profilePanel">
                     <PanelHeader
                         left={<PanelHeaderButton onClick={props.go} data-to="home">
@@ -127,7 +138,7 @@ const Trans = props =>{
                     </PanelHeader>
                     <Group>
                         <List>
-                        {regions.map((region_a,index)=>{
+                        {loader?<Loader></Loader>:regions.map((region_a,index)=>{
                             return <Cell onClick={() => {setRegion(region_a); setActiveView('profile')}}
                             asideContent={region === region_a ? <Icon24Done fill="var(--accent)" /> : null}>
                                     {region_a}
@@ -148,38 +159,18 @@ const Trans = props =>{
                     </PanelHeader>
                     <Group>
                         <List>
+                        {loader ? <Loader></Loader> : getTransport(region)}
                         {transports.map((transport_a,index)=>{
-                            return <Cell onClick={() => {setCats(transport_a); setActiveView('profile')}}
+                            return <Div onClick={() => {setCats(transport_a); setActiveView('profile')}}
                             asideContent={catTs === transport_a ? <Icon24Done fill="var(--accent)" /> : null}>
                                     {transport_a}
-                                 </Cell>
+                                 </Div>
                         })}
                         </List>
                     </Group>
                 </Panel>
             </View>
             {/* TS view для selectMimicry */} 
-
-            {/* LS view для selectMimicry*/}
-            {/* <View activePanel="regionPanel" id="LS">
-                <Panel id="regionPanel">
-                    <PanelHeader>
-                        Категория ТС
-                    </PanelHeader>
-                    <Group>
-                        <List>
-                        {ls.map((ls_a,index)=>{
-                            return <Cell onClick={() => {setSumInput(ls_a); setActiveView('profile')}}
-                            asideContent={sumInput === ls_a ? <Icon24Done fill="var(--accent)" /> : null}>
-                                    {ls_a}
-                                 </Cell>
-                        })}
-                        </List>
-                    </Group>
-                </Panel>
-            </View> */}
-            {/* LS view для selectMimicry */} 
-
             </Root>  
 	    </Panel>
     );

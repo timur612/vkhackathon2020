@@ -16,15 +16,17 @@ import ResultNDFL from './panels/NDFL/ResultNDFL';
 import ResultTrans from './panels/Trans_Tax/ResultTrans';
 import Main from './panels/Home/Main';
 import Profile from './panels/Profile/Profile';
-import {
-	Appearance,
-	ProviderContext,
-	ProviderContextInterface,
-	Scheme,
-	WebviewType,
-  } from 'ProviderContext';
+
+
+// import {
+// 	Appearance,
+// 	ProviderContext,
+// 	ProviderContextInterface,
+// 	Scheme,
+// 	WebviewType,
+//   } from 'ProviderContext';
 import TabBar from './panels/Tab_bar';
-import { canUseDOM } from '../../lib/dom';
+// import { canUseDOM } from '../../lib/dom';
 
 import {FixedLayout,Panel} from '@vkontakte/vkui';
 
@@ -129,7 +131,7 @@ const App = () => {
 		setActivePanel(e.currentTarget.dataset.to);
 	};
 	return (  
-		<Provider isWebView={true}>
+		// <Provider isWebView={true}>
 		<Panel>
 			<View activePanel={activePanel} popout={popout} history={history}onSwipeBack={goBack}>
 				<Home userFace={userFace} id='home' fetchedUser={fetchedUser} go={go}/>
@@ -150,15 +152,8 @@ const App = () => {
 								: ''}
 			
 		</Panel>
-		</Provider>
+		// </Provider>
 	);
 }
 
 export default App;
-export default class Provider extends React.Component<ProviderProps> {
-	constructor(props: ProviderProps) {
-	  super(props);
-	  if (canUseDOM) {
-		this.setScheme(props.scheme);
-	  }
-	}
